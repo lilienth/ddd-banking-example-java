@@ -16,11 +16,35 @@ import org.junit.jupiter.api.Test;
 
 class AccountManagementServiceTest {
 
-	private AccountManagementService ams;
+	public static AccountManagementService prepareTestData() {
+		AccountManagementService ams = new AccountManagementService();
+		Customer customer = ams.newCustomer("Carola", "Lilienthal",LocalDate.of(1967, 9, 11));
+		ams.newAccount(1000, customer);
+		ams.newAccount(5000, customer);
+		ams.newAccount(2000,customer);
+		
 
+		customer = ams.newCustomer("Hans", "Lilienthal",LocalDate.of(1968, 9, 11));
+		ams.newAccount(2000,customer);
+		ams.newAccount(5000,customer);
+		
+		customer = ams.newCustomer("Dieter", "Lilienthal",LocalDate.of(1969, 9, 11));
+		ams.newAccount(3000,customer);
+		ams.newAccount(5000,customer);
+		
+		customer = ams.newCustomer("Franz", "Lilienthal",LocalDate.of(1964, 9, 11));
+		ams.newAccount(4000,customer);
+		ams.newAccount(5000,customer);
+		
+		customer = ams.newCustomer("Carsten", "Lilienthal",LocalDate.of(1965, 9, 11));
+		ams.newAccount(5000,customer);
+
+		return ams;
+	}
+	
 	@Test
 	void testAMSCreation() {
-		ams = new AccountManagementService();
+		AccountManagementService ams = AccountManagementServiceTest.prepareTestData();
 		assertNotNull(ams.getAccountList());
 		assertNotNull(ams.getCustomerList());
 		assertEquals(5,ams.getCustomerList().size());
@@ -35,9 +59,7 @@ class AccountManagementServiceTest {
 	
 	@Test
 	void testAMSNewCustomerNewAccount() {
-		ams = new AccountManagementService();
-		assertEquals(5,ams.getCustomerList().size());
-		assertEquals(10,ams.getAccountList().size());
+		AccountManagementService ams = AccountManagementServiceTest.prepareTestData();
 		
 		Customer newCustomer = ams.newCustomer("Tea", "Ginster", LocalDate.of(1950, 12, 2));
 		assertTrue(ams.getCustomerList().contains(newCustomer));
@@ -62,9 +84,7 @@ class AccountManagementServiceTest {
 	
 	@Test
 	void testAMSTransferMoney() {		
-		ams = new AccountManagementService();
-		assertEquals(5,ams.getCustomerList().size());
-		assertEquals(10,ams.getAccountList().size());
+		AccountManagementService ams = AccountManagementServiceTest.prepareTestData();
 
 		Set<Integer> accountNumbers = ams.getAccountNumberList();
 		Iterator<Integer> iterator = accountNumbers.iterator();

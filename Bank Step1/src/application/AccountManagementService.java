@@ -21,26 +21,6 @@ public class AccountManagementService {
 	
 	public AccountManagementService() {
 		
-		Customer customer = this.newCustomer("Carola", "Lilienthal",LocalDate.of(1967, 9, 11));
-		this.newAccount(1000, customer);
-		this.newAccount(5000, customer);
-		this.newAccount(2000,customer);
-		
-
-		customer = this.newCustomer("Hans", "Lilienthal",LocalDate.of(1968, 9, 11));
-		this.newAccount(2000,customer);
-		this.newAccount(5000,customer);
-		
-		customer = this.newCustomer("Dieter", "Lilienthal",LocalDate.of(1969, 9, 11));
-		this.newAccount(3000,customer);
-		this.newAccount(5000,customer);
-		
-		customer = this.newCustomer("Franz", "Lilienthal",LocalDate.of(1964, 9, 11));
-		this.newAccount(4000,customer);
-		this.newAccount(5000,customer);
-		
-		customer = this.newCustomer("Carsten", "Lilienthal",LocalDate.of(1965, 9, 11));
-		this.newAccount(5000,customer);
 	}
 	
 	public Customer newCustomer(String firstName, String familyName, LocalDate dateOfBirth) {

@@ -13,15 +13,10 @@ import org.junit.jupiter.api.Test;
 
 class CreditServiceTest {
 
-	private AccountManagementService ams;
-	private CreditService cs;
-
 	@Test
 	void testCSCreation() {
-		ams = new AccountManagementService();
-		assertEquals(5,ams.getCustomerList().size());
-		assertEquals(10,ams.getAccountList().size());
-		cs = new CreditService(ams);
+		AccountManagementService ams = AccountManagementServiceTest.prepareTestData();
+		CreditService cs = new CreditService(ams);
 
 		int creditNumber = cs.applyForCredit(1000, ams.getCustomerList().get(0));
 		Credit credit = cs.getCredit(creditNumber);
@@ -38,10 +33,8 @@ class CreditServiceTest {
 	
 	@Test
 	void testCreditProcess() {
-		ams = new AccountManagementService();
-		assertEquals(5,ams.getCustomerList().size());
-		assertEquals(10,ams.getAccountList().size());
-		cs = new CreditService(ams);
+		AccountManagementService ams = AccountManagementServiceTest.prepareTestData();
+		CreditService cs = new CreditService(ams);
 
 		int creditNumber = cs.applyForCredit(1000, ams.getCustomerList().get(0));
 		Credit credit = cs.getCredit(creditNumber);
