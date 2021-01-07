@@ -31,6 +31,7 @@ class CreditServiceTest {
 		assertTrue(credit.getAccount()==creditAccount);		
 		assertTrue(ams.getAccountList().contains(creditAccount));
 		assertTrue(ams.getCustomerList().contains(creditAccount.getAccountowner()));
+		assertEquals(11,ams.getAccountList().size());
 
 	}
 	
@@ -46,6 +47,7 @@ class CreditServiceTest {
 		assertTrue(credit.getStatus()==Status.granted);
 		assertTrue(credit.getAccount()==creditAccount);
 		assertEquals(-1000, creditAccount.getBalance());
+		assertEquals(11,ams.getAccountList().size());
 		
 		cs.makePaymentForCredit(creditNumber, 100);
 		assertEquals(-900, creditAccount.getBalance());		

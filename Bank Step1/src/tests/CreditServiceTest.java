@@ -19,6 +19,8 @@ class CreditServiceTest {
 	@Test
 	void testCSCreation() {
 		ams = new AccountManagementService();
+		assertEquals(5,ams.getCustomerList().size());
+		assertEquals(10,ams.getAccountList().size());
 		cs = new CreditService(ams);
 
 		int creditNumber = cs.applyForCredit(1000, ams.getCustomerList().get(0));
@@ -30,6 +32,7 @@ class CreditServiceTest {
 		assertTrue(credit.getStatus()==Status.granted);
 		assertTrue(credit.getAccount()==creditAccount);		
 		assertTrue(ams.getAccountList().contains(creditAccount));
+		assertEquals(11,ams.getAccountList().size());
 
 	}
 	
@@ -45,6 +48,7 @@ class CreditServiceTest {
 		assertTrue(credit.getStatus()==Status.granted);
 		assertTrue(credit.getAccount()==creditAccount);
 		assertEquals(-1000, creditAccount.getBalance());
+		assertEquals(11,ams.getAccountList().size());
 		
 		cs.makePaymentForCredit(creditNumber, 100);
 		assertEquals(-900, creditAccount.getBalance());		

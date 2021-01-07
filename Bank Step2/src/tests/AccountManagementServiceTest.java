@@ -25,24 +25,11 @@ class AccountManagementServiceTest {
 		assertNotNull(ams.getCustomerList());
 		assertEquals(5,ams.getCustomerList().size());
 		assertEquals(10,ams.getAccountList().size());
-	}
-	
-	@Test
-	void testAMSTransferMoney() {		
-		ams = new AccountManagementService();
-		assertEquals(5,ams.getCustomerList().size());
-		assertEquals(10,ams.getAccountList().size());
-
-		Set<Integer> accountNumbers = ams.getAccountNumberList();
-		Iterator<Integer> iterator = accountNumbers.iterator();
-		int debitorAccountNumber = iterator.next();
-		int creditorAccountNumber = iterator.next();
-		float debitorSaldo = ams.getAccount(debitorAccountNumber).getBalance();
-		float creditorSaldo = ams.getAccount(creditorAccountNumber).getBalance();
-		ams.transferMoney(100, debitorAccountNumber, creditorAccountNumber);
-		assertEquals(debitorSaldo-100, ams.getAccount(debitorAccountNumber).getBalance());
-		assertEquals(creditorSaldo+100, ams.getAccount(creditorAccountNumber).getBalance());
-		
+		int counter = 0;
+		for (Customer customer : ams.getCustomerList()) {
+			counter = counter + customer.getAccountList().size();	
+		}
+		assertEquals(10, counter);
 	}
 	
 	@Test
@@ -74,4 +61,21 @@ class AccountManagementServiceTest {
 		
 	}
 
+	@Test
+	void testAMSTransferMoney() {		
+		ams = new AccountManagementService();
+		assertEquals(5,ams.getCustomerList().size());
+		assertEquals(10,ams.getAccountList().size());
+
+		Set<Integer> accountNumbers = ams.getAccountNumberList();
+		Iterator<Integer> iterator = accountNumbers.iterator();
+		int debitorAccountNumber = iterator.next();
+		int creditorAccountNumber = iterator.next();
+		float debitorSaldo = ams.getAccount(debitorAccountNumber).getBalance();
+		float creditorSaldo = ams.getAccount(creditorAccountNumber).getBalance();
+		ams.transferMoney(100, debitorAccountNumber, creditorAccountNumber);
+		assertEquals(debitorSaldo-100, ams.getAccount(debitorAccountNumber).getBalance());
+		assertEquals(creditorSaldo+100, ams.getAccount(creditorAccountNumber).getBalance());
+		
+	}
 }
