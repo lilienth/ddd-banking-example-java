@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import accounting.AccountManagementService;
 import credit.Credit;
 import credit.CreditAccount;
 import credit.CreditCustomer;
