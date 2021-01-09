@@ -1,5 +1,6 @@
 package application;
 
+import models.Account;
 import models.Credit;
 import models.Credit.Status;
 import models.CreditAccount;
@@ -40,12 +41,26 @@ public class CreditService {
 		return creditList.get(creditNumber);
 	}
 	
+	public Credit getCreditFromAccountNumber (int accountNumber) {
+		CreditAccount account = (CreditAccount)accountManagementService.getAccount(accountNumber);
+		return creditList.get(account.getCredit().getCreditNumber());
+	}
+	
+	
 	public void makePaymentForCredit (int creditNumber, float amount) {
 		Credit credit = creditList.get(creditNumber);
 		CreditAccount creditAccount = credit.getAccount();
 		float balance = creditAccount.getBalance();
 		balance = balance + amount;
 		creditAccount.setBalance(balance);
+		
+	}
+	
+	public void makePaymentForCreditAccount (int accountNumber, float amount) {
+		Account account = accountManagementService.getAccount(accountNumber);
+		float balance = account.getBalance();
+		balance = balance + amount;
+		account.setBalance(balance);
 		
 	}
 	

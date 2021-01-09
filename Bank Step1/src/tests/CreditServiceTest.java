@@ -24,11 +24,14 @@ class CreditServiceTest {
 		assertTrue(credit.getStatus()==Status.applied);
 		
 		CreditAccount creditAccount = cs.grandCredit(creditNumber);
+		assertEquals(credit, creditAccount.getCredit());
 		assertTrue(credit.getStatus()==Status.granted);
 		assertTrue(credit.getAccount()==creditAccount);		
 		assertTrue(ams.getAccountList().contains(creditAccount));
 		assertEquals(11,ams.getAccountList().size());
 
+		Credit credit2 = cs.getCreditFromAccountNumber(creditAccount.getAccountnumber());
+		assertEquals(credit, credit2);
 	}
 	
 	@Test
@@ -40,6 +43,7 @@ class CreditServiceTest {
 		Credit credit = cs.getCredit(creditNumber);
 		
 		CreditAccount creditAccount = cs.grandCredit(creditNumber);
+		assertEquals(credit, creditAccount.getCredit());
 		assertTrue(credit.getStatus()==Status.granted);
 		assertTrue(credit.getAccount()==creditAccount);
 		assertEquals(-1000, creditAccount.getBalance());

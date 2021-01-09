@@ -40,6 +40,12 @@ public class CreditService {
 		return creditList.get(creditNumber);
 	}
 	
+	public Credit getCreditFromAccountNumber (int accountNumber) {
+		CreditAccount account = (CreditAccount)accountManagementService.getAccount(accountNumber);
+		return creditList.get(account.getCredit().getCreditNumber());
+	}
+	
+		
 	public void makePaymentForCredit (int creditNumber, float amount) {
 		Credit credit = creditList.get(creditNumber);
 		CreditAccount creditAccount = credit.getAccount();

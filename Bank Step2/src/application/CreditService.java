@@ -41,6 +41,18 @@ public class CreditService {
 		return creditList.get(creditNumber);
 	}
 	
+	public Credit getCreditFromAccountNumber (int accountNumber) {
+		Credit credit = null;
+		for (Map.Entry<Integer, Credit> entry : creditList.entrySet()) {
+			if (entry.getValue().getAccount().getAccountnumber() == accountNumber)
+			{
+				credit = entry.getValue();
+			}
+		}
+		return credit;
+	}
+	
+	
 	public void makePaymentForCredit (int creditNumber, float amount) {
 		Credit credit = creditList.get(creditNumber);
 		CreditAccount creditAccount = credit.getAccount();

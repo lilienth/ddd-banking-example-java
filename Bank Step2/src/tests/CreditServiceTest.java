@@ -29,6 +29,8 @@ class CreditServiceTest {
 		assertTrue(ams.getAccountList().contains(creditAccount));
 		assertEquals(11,ams.getAccountList().size());
 
+		Credit credit2 = cs.getCreditFromAccountNumber(creditAccount.getAccountnumber());
+		assertEquals(credit, credit2);
 	}
 	
 	@Test
