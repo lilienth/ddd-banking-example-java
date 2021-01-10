@@ -28,7 +28,7 @@ public class AccountManagementService {
 	public Customer newCustomer(String firstName, String familyName, LocalDate dateOfBirth) {
 		Customer customer = new Customer(firstName, familyName, dateOfBirth);	
 		customerList.put(customer.getCustomerNumber(), customer); 
-		creditService.newCustomer(customer.getFirstName(), customer.getFamilyName(), customer.getDateOfBirth(), customer.getCustomerNumber().getCustomerNumber());
+		creditService.newCustomer(customer.getFirstName(), customer.getFamilyName(), customer.getDateOfBirth(), customer.getCustomerNumber());
 		return customer;
 	}
 	

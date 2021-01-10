@@ -9,6 +9,7 @@ import credit.CreditAccount;
 import credit.CreditCustomer;
 import credit.CreditService;
 import valueObjects.Amount;
+import valueObjects.CreditNumber;
 import credit.Credit.Status;
 
 class CreditServiceTest {
@@ -22,7 +23,7 @@ class CreditServiceTest {
 		assertEquals(5,cs.getCreditCustomerList().size());
 		assertEquals(0,cs.getCreditAccountList().size());
 
-		int creditNumber = cs.applyForCredit(new Amount(1000), cs.getCreditCustomerList().get(0));
+		CreditNumber creditNumber = cs.applyForCredit(new Amount(1000), cs.getCreditCustomerList().get(0));
 		Credit credit = cs.getCredit(creditNumber);
 		assertEquals(new Amount(1000), credit.getAmountOfCredit());
 		assertTrue(credit.getStatus()==Status.applied);
@@ -47,7 +48,7 @@ class CreditServiceTest {
 		assertEquals(0,cs.getCreditAccountList().size());
 		
 		CreditCustomer customer = cs.getCreditCustomerList().get(0);		
-		int creditNumber = cs.applyForCredit(new Amount(1000), customer);
+		CreditNumber creditNumber = cs.applyForCredit(new Amount(1000), customer);
 		Credit credit = cs.getCredit(creditNumber);
 		CreditAccount newCreditAccount = cs.newCreditAccount(credit);
 		assertTrue(cs.getCreditAccountList().contains(newCreditAccount));
@@ -69,7 +70,7 @@ class CreditServiceTest {
 		assertEquals(5,cs.getCreditCustomerList().size());
 		assertEquals(0,cs.getCreditAccountList().size());
 
-		int creditNumber = cs.applyForCredit(new Amount(1000), cs.getCreditCustomerList().get(0));
+		CreditNumber creditNumber = cs.applyForCredit(new Amount(1000), cs.getCreditCustomerList().get(0));
 		Credit credit = cs.getCredit(creditNumber);
 		assertEquals(5,cs.getCreditCustomerList().size());
 		
