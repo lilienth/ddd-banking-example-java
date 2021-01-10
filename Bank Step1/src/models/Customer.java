@@ -41,16 +41,8 @@ public class Customer {
 		return accountList;
 	}
 
-	public void setAccountList(List<Account> accountList) {
-		this.accountList = accountList;
-	}
-
 	public List<Credit> getCreditList() {
 		return creditList;
-	}
-
-	public void setCreditList(List<Credit> creditList) {
-		this.creditList = creditList;
 	}
 
 }
