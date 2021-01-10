@@ -73,5 +73,9 @@ public class AccountManagementService {
 	public Account getAccount(int accountNumber) {
 		return accountList.get(accountNumber);
 	}
+	
+	public Customer getCustomer(int accountNumber) {
+		return accountList.get(accountNumber).getAccountowner();
+	}
 
 }

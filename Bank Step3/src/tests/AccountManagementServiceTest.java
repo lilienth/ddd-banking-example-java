@@ -87,6 +87,7 @@ class AccountManagementServiceTest {
 		Account newAccount = ams.newAccount(2000, newCustomer);
 		assertTrue(ams.getAccountList().contains(newAccount));
 		assertEquals(newAccount, ams.getAccount(newAccount.getAccountnumber()));
+		assertEquals(newCustomer, ams.getCustomer(newAccount.getAccountnumber()));
 		assertTrue(newCustomer.getAccountList().contains(newAccount));
 		assertEquals(11,ams.getAccountList().size());
 		
