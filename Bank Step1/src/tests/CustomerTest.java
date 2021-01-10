@@ -2,13 +2,9 @@ package tests;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import models.Account;
-import models.Credit;
 import models.Customer;
 
 class CustomerTest {
