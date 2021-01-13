@@ -3,7 +3,6 @@ package models;
 import java.time.LocalDate;
 
 public class Security {
-	//International Securities Identification Number
 	private String ISIN;
 	private float purchasePrice;
 	private LocalDate purchaseDate;
