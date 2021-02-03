@@ -26,18 +26,17 @@ public class CreditService {
 
 	}
 
-	public CreditAccount newCreditAccount(Amount balance, Credit credit) {
+	public CreditAccount newCreditAccount(CreditCustomer customer, Amount balance, Credit credit) {
 		CreditAccount account = new CreditAccount(credit.getAmountOfCredit());
 		account.deposit(balance);
 		accountList.put(account.getAccountnumber(), account);
-		CreditCustomer customer = credit.getCustomer();
 		customer.addAccount(account);
 		return account;
 	}
 
 	public CreditNumber applyForCredit(Amount amount, CreditCustomer customer) {
 
-		Credit credit = new Credit(customer, amount);
+		Credit credit = new Credit(amount);
 		customer.getCreditList().add(credit);
 		CreditNumber creditNumber = credit.getCreditNumber();
 		creditList.put(creditNumber, credit);
