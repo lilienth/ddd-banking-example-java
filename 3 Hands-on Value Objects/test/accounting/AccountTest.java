@@ -15,8 +15,8 @@ class AccountTest {
 
 		Customer accountowner = new Customer("Carola", "Lilienthal", LocalDate.of(1967, 9, 11));
 		Account account = new Account(accountowner);
-		assertEquals(10, account.getAccountnumber());
-		assertEquals(0, account.getBalance());
+		assertEquals(1, account.getAccountnumber().getAccountNumber());
+		assertEquals(0, account.getBalance().getAmount());
 		assertEquals(accountowner, account.getAccountowner());
 	}
 

@@ -19,24 +19,24 @@ public class AccountManagementServiceTest {
 	public static AccountManagementService prepareTestData(CreditService cs) {
 		AccountManagementService ams = new AccountManagementService(cs);
 		Customer customer = ams.newCustomer("Carola", "Lilienthal", LocalDate.of(1967, 9, 11));
-		ams.newAccount(new Amount(1000), customer);
-		ams.newAccount(new Amount(5000), customer);
-		ams.newAccount(new Amount(2000), customer);
+		ams.newAccount(Amount.of(1000), customer);
+		ams.newAccount(Amount.of(5000), customer);
+		ams.newAccount(Amount.of(2000), customer);
 
 		customer = ams.newCustomer("Hans", "Lilienthal", LocalDate.of(1968, 9, 11));
-		ams.newAccount(new Amount(2000), customer);
-		ams.newAccount(new Amount(5000), customer);
+		ams.newAccount(Amount.of(3000), customer);
+		ams.newAccount(Amount.of(5000), customer);
 
 		customer = ams.newCustomer("Dieter", "Lilienthal", LocalDate.of(1969, 9, 11));
-		ams.newAccount(new Amount(3000), customer);
-		ams.newAccount(new Amount(5000), customer);
+		ams.newAccount(Amount.of(3000), customer);
+		ams.newAccount(Amount.of(5000), customer);
 
 		customer = ams.newCustomer("Franz", "Lilienthal", LocalDate.of(1964, 9, 11));
-		ams.newAccount(new Amount(4000), customer);
-		ams.newAccount(new Amount(5000), customer);
+		ams.newAccount(Amount.of(4000), customer);
+		ams.newAccount(Amount.of(5000), customer);
 
 		customer = ams.newCustomer("Carsten", "Lilienthal", LocalDate.of(1965, 9, 11));
-		ams.newAccount(new Amount(5000), customer);
+		ams.newAccount(Amount.of(5000), customer);
 
 		return ams;
 	}
@@ -68,9 +68,9 @@ public class AccountManagementServiceTest {
 		AccountNumber creditorAccountNumber = iterator.next();
 		Amount debitorSaldo = ams.getAccount(debitorAccountNumber).getBalance();
 		Amount creditorSaldo = ams.getAccount(creditorAccountNumber).getBalance();
-		ams.transferMoney(new Amount(100), debitorAccountNumber, creditorAccountNumber);
-		assertEquals(debitorSaldo.subtract(new Amount(100)), ams.getAccount(debitorAccountNumber).getBalance());
-		assertEquals(creditorSaldo.add(new Amount(100)), ams.getAccount(creditorAccountNumber).getBalance());
+		ams.transferMoney(Amount.of(100), debitorAccountNumber, creditorAccountNumber);
+		assertEquals(debitorSaldo.subtract(Amount.of(100)), ams.getAccount(debitorAccountNumber).getBalance());
+		assertEquals(creditorSaldo.add(Amount.of(100)), ams.getAccount(creditorAccountNumber).getBalance());
 
 	}
 
@@ -84,7 +84,7 @@ public class AccountManagementServiceTest {
 		assertEquals(6, ams.getCustomerList().size());
 		assertEquals(6, cs.getCreditCustomerList().size());
 
-		Account newAccount = ams.newAccount(new Amount(2000), newCustomer);
+		Account newAccount = ams.newAccount(Amount.of(2000), newCustomer);
 		assertTrue(ams.getAccountList().contains(newAccount));
 		assertEquals(newAccount, ams.getAccount(newAccount.getAccountnumber()));
 		assertEquals(newCustomer, ams.getCustomer(newAccount.getAccountnumber()));
