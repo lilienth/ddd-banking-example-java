@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import credit.CreditService;
@@ -12,29 +13,27 @@ import valueObjects.AccountNumber;
 import valueObjects.Amount;
 import valueObjects.CustomerNumber;
 
-import java.util.Map;
-
 public class AccountManagementService {
 	private Map<CustomerNumber, Customer> customerList = new HashMap<CustomerNumber, Customer>();
 	private Map<AccountNumber, Account> accountList = new HashMap<AccountNumber, Account>();
 	private CreditService creditService = null;
-	
-	
+
 	public AccountManagementService(CreditService creditService) {
-		
+
 		this.creditService = creditService;
 	}
-	
+
 	public Customer newCustomer(String firstName, String familyName, LocalDate dateOfBirth) {
-		Customer customer = new Customer(firstName, familyName, dateOfBirth);	
-		customerList.put(customer.getCustomerNumber(), customer); 
-		creditService.newCustomer(customer.getFirstName(), customer.getFamilyName(), customer.getDateOfBirth(), customer.getCustomerNumber());
+		Customer customer = new Customer(firstName, familyName, dateOfBirth);
+		customerList.put(customer.getCustomerNumber(), customer);
+		creditService.newCustomer(customer.getFirstName(), customer.getFamilyName(), customer.getDateOfBirth(),
+				customer.getCustomerNumber());
 		return customer;
 	}
-	
-	public Account newAccount(Amount balance, Customer customer) {		
-		Account account = new Account();	
-		account.deposit(balance);
+
+	public Account newAccount(Amount balance, Customer customer) {
+		Account account = new Account(customer);
+		account.setBalance(balance);
 		accountList.put(account.getAccountnumber(), account);
 		customer.getAccountList().add(account);
 		return account;
@@ -48,15 +47,18 @@ public class AccountManagementService {
 		return new ArrayList<Customer>(customerList.values());
 	}
 
-	
-	public void transferMoney (Amount amount, AccountNumber debitorAccountNumber, AccountNumber creditorAccountNumber) {
-		accountList.get(debitorAccountNumber).withdraw(amount);
-		accountList.get(creditorAccountNumber).deposit(amount);
-		
+	public void transferMoney(Amount amount, AccountNumber debitorAccountNumber, AccountNumber creditorAccountNumber) {
+		Amount balance = accountList.get(debitorAccountNumber).getBalance();
+		balance = balance.subtract(amount);
+		accountList.get(debitorAccountNumber).setBalance(balance);
+
+		balance = accountList.get(creditorAccountNumber).getBalance();
+		balance = balance.add(amount);
+		accountList.get(creditorAccountNumber).setBalance(balance);
 	}
 
 	public Set<AccountNumber> getAccountNumberList() {
-		
+
 		return accountList.keySet();
 	}
 
@@ -64,7 +66,6 @@ public class AccountManagementService {
 		return accountList.get(accountNumber);
 	}
 
-	
 	public Customer getCustomer(AccountNumber accountNumber) {
 		Customer customer = null;
 		for (Map.Entry<CustomerNumber, Customer> entry : customerList.entrySet()) {
@@ -72,13 +73,12 @@ public class AccountManagementService {
 			Iterator<Account> iterator = accountList.iterator();
 			while (iterator.hasNext() && customer == null) {
 				Account account = iterator.next();
-				if (account.getAccountnumber() == accountNumber)
-				{
+				if (account.getAccountnumber() == accountNumber) {
 					customer = entry.getValue();
 				}
-			}			
+			}
 		}
 		return customer;
-	}	
-	
+	}
+
 }

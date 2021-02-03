@@ -1,9 +1,9 @@
 package credit;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import credit.Credit;
 import valueObjects.CustomerNumber;
 
 public class CreditCustomer {
@@ -13,7 +13,7 @@ public class CreditCustomer {
 	private CustomerNumber customerNumber;
 	private List<CreditAccount> accountList;
 	private List<Credit> creditList;
-	
+
 	public CreditCustomer(String firstName, String familyName, LocalDate dateOfBirth) {
 		super();
 		this.firstName = firstName;
@@ -39,7 +39,7 @@ public class CreditCustomer {
 	public CustomerNumber getCustomerNumber() {
 		return customerNumber;
 	}
-		
+
 	public List<CreditAccount> getAccountList() {
 		return accountList;
 	}

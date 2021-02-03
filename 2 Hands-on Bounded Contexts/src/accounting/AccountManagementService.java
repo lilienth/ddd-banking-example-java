@@ -54,10 +54,6 @@ public class AccountManagementService {
 		balance = accountList.get(creditorAccountNumber).getBalance();
 		balance = balance + amount;
 		accountList.get(creditorAccountNumber).setBalance(balance);
-
-//		accountList.get(debitorAccountNumber).withdraw(amount);
-//		accountList.get(creditorAccountNumber).deposit(amount);
-
 	}
 
 	public Set<Integer> getAccountNumberList() {

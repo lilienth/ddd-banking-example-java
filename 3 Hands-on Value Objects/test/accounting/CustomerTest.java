@@ -1,18 +1,18 @@
-package tests;
-import static org.junit.jupiter.api.Assertions.*;
+package accounting;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.time.LocalDate;
 
 import org.junit.jupiter.api.Test;
 
-import credit.CreditCustomer;
-
-class CreditCustomerTest {
+class CustomerTest {
 
 	@Test
 	void testCustomerConstruction() {
-		
-		CreditCustomer customer = new CreditCustomer("Carola", "Lilienthal", LocalDate.of(1967,9,11));
+
+		Customer customer = new Customer("Carola", "Lilienthal", LocalDate.of(1967, 9, 11));
 		assertEquals("Carola", customer.getFirstName());
 		assertEquals("Lilienthal", customer.getFamilyName());
 		assertEquals(LocalDate.of(1967, 9, 11), customer.getDateOfBirth());
