@@ -1,46 +1,43 @@
-package models;
+package credit;
+
+import valueObjects.Amount;
+import valueObjects.CreditNumber;
 
 public class Credit {
-	private float amountOfCredit;
-	private Customer customer;
-	private int creditNumber;
+	private Amount amountOfCredit;
+	private CreditNumber creditNumber;
 	private Status status;
+	private CreditCustomer customer;
 	private CreditAccount account;
 
-
 	public enum Status {
-		applied,
-		refused,
-		granted,
-		delayed,
-		payed
+		applied, refused, granted, delayed, payed
 	};
-	
-	public Credit(float amountOfCredit, Customer customer, int creditNumber) {
+
+	public Credit(CreditCustomer customer, Amount amountOfCredit) {
 		super();
-		this.amountOfCredit = amountOfCredit;
 		this.customer = customer;
-		this.customer.getCreditList().add(this);
-		this.creditNumber = creditNumber;
+		this.amountOfCredit = amountOfCredit;
+		this.creditNumber = CreditNumber.getValidCreditNumber();
 		this.status = Status.applied;
 	}
 
-	public float getAmountOfCredit() {
+	public Amount getAmountOfCredit() {
 		return amountOfCredit;
 	}
 
-	public void setAmountOfCredit(float amountOfCredit) {
+	public void setAmountOfCredit(Amount amountOfCredit) {
 		this.amountOfCredit = amountOfCredit;
 	}
 
-	public Customer getCustomer() {
+	public CreditCustomer getCustomer() {
 		return customer;
 	}
 
-	public int getCreditNumber() {
+	public CreditNumber getCreditNumber() {
 		return creditNumber;
 	}
-	
+
 	public Status getStatus() {
 		return status;
 	}
