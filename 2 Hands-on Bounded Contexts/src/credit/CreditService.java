@@ -9,42 +9,42 @@ import java.util.Set;
 
 import credit.Credit.Status;
 
-
-
 public class CreditService {
 	private Map<Integer, CreditCustomer> customerList = new HashMap<Integer, CreditCustomer>();
 	private Map<Integer, CreditAccount> accountList = new HashMap<Integer, CreditAccount>();
 	private int creditAccountNumberCounter = 0;
 	private Map<Integer, Credit> creditList = new HashMap<Integer, Credit>();
 	private int creditNumberCounter = 0;
-	
+
 	public CreditService() {
 	}
 
 	// should only be called by AccountManagementService
 	public void newCustomer(String firstName, String familyName, LocalDate dateOfBirth, int customerNumber) {
 		customerList.put(customerNumber, new CreditCustomer(firstName, familyName, dateOfBirth, customerNumber));
-		
+
 	}
-	
-	public CreditAccount newCreditAccount(float balance, CreditCustomer customer) {		
-		CreditAccount account = new CreditAccount(balance, creditAccountNumberCounter++);	
-		account.deposit(balance);
+
+	public CreditAccount newCreditAccount(float balance, Credit credit) {
+		CreditAccount account = new CreditAccount(creditAccountNumberCounter++, credit);
+		account.setBalance(balance);
 		accountList.put(account.getAccountnumber(), account);
+		CreditCustomer customer = credit.getCustomer();
 		customer.getAccountList().add(account);
 		return account;
 	}
-	public int applyForCredit (float amount, CreditCustomer customer) {
-		
+
+	public int applyForCredit(float amount, CreditCustomer customer) {
+
 		int creditNumber = creditNumberCounter++;
-		Credit credit = new Credit(amount, creditNumber);
+		Credit credit = new Credit(creditNumber, customer, amount);
 		customer.getCreditList().add(credit);
 		creditList.put(creditNumber, credit);
-		
-		return creditNumber;		
+
+		return creditNumber;
 	}
-	
-	public CreditAccount grantCredit (int creditNumber) {
+
+	public CreditAccount grantCredit(int creditNumber) {
 		Credit credit = this.getCredit(creditNumber);
 		credit.setStatus(Status.granted);
 		CreditAccount newCreditAccount = this.newCreditAccount(credit);
@@ -52,43 +52,41 @@ public class CreditService {
 		return newCreditAccount;
 	}
 
-	public Credit getCredit (int creditNumber) {
+	public Credit getCredit(int creditNumber) {
 		return creditList.get(creditNumber);
 	}
 
-	
-	public Credit getCreditFromAccountNumber (int accountNumber) {
+	public Credit getCreditFromAccountNumber(int accountNumber) {
 		Credit credit = null;
 		for (Map.Entry<Integer, Credit> entry : creditList.entrySet()) {
-			if (entry.getValue().getAccount().getAccountnumber() == accountNumber)
-			{
+			if (entry.getValue().getAccount().getAccountnumber() == accountNumber) {
 				credit = entry.getValue();
 			}
 		}
 		return credit;
 	}
 
-	
-	public void makePaymentForCredit (int creditNumber, float amount) {
+	public void makePaymentForCredit(int creditNumber, float amount) {
 		Credit credit = creditList.get(creditNumber);
 		CreditAccount creditAccount = credit.getAccount();
-		creditAccount.deposit(amount);
-		
+		float balance = creditAccount.getBalance();
+		balance = balance + amount;
+		creditAccount.setBalance(balance);
+
 	}
-	
+
 	public CreditCustomer getCustomerForCredit(Credit credit) {
 		CreditCustomer customer = null;
 		for (Map.Entry<Integer, CreditCustomer> entry : customerList.entrySet()) {
-			if (entry.getValue().getCreditList().contains(credit))
-			{
+			if (entry.getValue().getCreditList().contains(credit)) {
 				customer = entry.getValue();
-			}			
+			}
 		}
 		return customer;
 	}
-	
-	public CreditAccount newCreditAccount(Credit credit) {		
-		CreditAccount account = new CreditAccount(credit.getAmountOfCredit(), creditAccountNumberCounter++);		
+
+	public CreditAccount newCreditAccount(Credit credit) {
+		CreditAccount account = new CreditAccount(creditAccountNumberCounter++, credit);
 		accountList.put(account.getAccountnumber(), account);
 		CreditCustomer customer = this.getCustomerForCredit(credit);
 		customer.getAccountList().add(account);
@@ -99,19 +97,17 @@ public class CreditService {
 		return new ArrayList<CreditAccount>(accountList.values());
 	}
 
-
 	public List<CreditCustomer> getCreditCustomerList() {
 		return new ArrayList<CreditCustomer>(customerList.values());
-	}	
-	
+	}
+
 	public CreditAccount getCreditAccount(int accountNumber) {
 		return accountList.get(accountNumber);
 	}
 
 	public Set<Integer> getAccountNumberList() {
-		
+
 		return accountList.keySet();
 	}
-
 
 }

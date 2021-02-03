@@ -11,7 +11,7 @@ public class Account {
 	public Account(Customer accountOwner) {
 		super();
 		this.balance = Amount.of(0);
-		this.accountNumber = new AccountNumber();
+		this.accountNumber = AccountNumber.getValidAccountNumber();
 		this.accountOwner = accountOwner;
 	}
 
@@ -19,12 +19,12 @@ public class Account {
 		return balance;
 	}
 
-	public AccountNumber getAccountnumber() {
-		return accountNumber;
-	}
-
 	public void setBalance(Amount amount) {
 		this.balance = amount;
+	}
+
+	public AccountNumber getAccountnumber() {
+		return accountNumber;
 	}
 
 	public Customer getAccountowner() {

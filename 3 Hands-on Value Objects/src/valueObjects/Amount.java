@@ -23,7 +23,7 @@ public class Amount {
 		return (amount >= 0);
 	}
 
-	public float getAmount() {
+	public float value() {
 		return this.amount;
 	}
 

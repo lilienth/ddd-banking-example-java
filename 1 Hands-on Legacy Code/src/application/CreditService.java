@@ -22,7 +22,7 @@ public class CreditService {
 	public int applyForCredit(float amount, Customer customer) {
 
 		int creditNumber = creditNumberCounter++;
-		Credit credit = new Credit(amount, customer, creditNumber);
+		Credit credit = new Credit(creditNumber, customer, amount);
 		creditList.put(creditNumber, credit);
 
 		return creditNumber;

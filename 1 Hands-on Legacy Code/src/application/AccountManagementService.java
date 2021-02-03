@@ -37,7 +37,7 @@ public class AccountManagementService {
 	}
 
 	public CreditAccount newCreditAccount(Credit credit) {
-		CreditAccount account = new CreditAccount(credit, accountNumberCounter++);
+		CreditAccount account = new CreditAccount(accountNumberCounter++, credit);
 		accountList.put(account.getAccountnumber(), account);
 		credit.getCustomer().getAccountList().add(account);
 		return account;

@@ -2,26 +2,21 @@ package models;
 
 public class Credit {
 	private float amountOfCredit;
-	private Customer customer;
 	private int creditNumber;
 	private Status status;
+	private Customer customer;
 	private CreditAccount account;
 
-
 	public enum Status {
-		applied,
-		refused,
-		granted,
-		delayed,
-		payed
+		applied, refused, granted, delayed, payed
 	};
-	
-	public Credit(float amountOfCredit, Customer customer, int creditNumber) {
+
+	public Credit(int creditNumber, Customer customer, float amountOfCredit) {
 		super();
 		this.amountOfCredit = amountOfCredit;
+		this.creditNumber = creditNumber;
 		this.customer = customer;
 		this.customer.getCreditList().add(this);
-		this.creditNumber = creditNumber;
 		this.status = Status.applied;
 	}
 
@@ -40,7 +35,7 @@ public class Credit {
 	public int getCreditNumber() {
 		return creditNumber;
 	}
-	
+
 	public Status getStatus() {
 		return status;
 	}

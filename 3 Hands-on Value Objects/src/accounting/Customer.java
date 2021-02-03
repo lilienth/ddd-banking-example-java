@@ -1,10 +1,10 @@
 package accounting;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 import valueObjects.CustomerNumber;
-
 
 public class Customer {
 	private String firstName;
@@ -12,13 +12,13 @@ public class Customer {
 	private LocalDate dateOfBirth;
 	private CustomerNumber customerNumber;
 	private List<Account> accountList;
-	
+
 	public Customer(String firstName, String familyName, LocalDate dateOfBirth) {
 		super();
 		this.firstName = firstName;
 		this.familyName = familyName;
 		this.dateOfBirth = dateOfBirth;
-		this.customerNumber = new CustomerNumber();
+		this.customerNumber = CustomerNumber.getValidCustomerNumber();
 		accountList = new ArrayList<Account>();
 	}
 
@@ -37,10 +37,9 @@ public class Customer {
 	public CustomerNumber getCustomerNumber() {
 		return customerNumber;
 	}
-		
+
 	public List<Account> getAccountList() {
 		return accountList;
 	}
-
 
 }

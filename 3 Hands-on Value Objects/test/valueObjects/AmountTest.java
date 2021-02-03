@@ -19,7 +19,7 @@ class AmountTest {
 
 		Amount amount = Amount.of(10);
 		assertNotNull(amount);
-		assertEquals(10, amount.getAmount());
+		assertEquals(10, amount.value());
 	}
 
 	@Test
@@ -30,7 +30,7 @@ class AmountTest {
 
 		Amount amount3 = amount1.add(amount2);
 
-		assertEquals(15, amount3.getAmount());
+		assertEquals(15, amount3.value());
 	}
 
 	@Test
@@ -40,7 +40,7 @@ class AmountTest {
 
 		Amount amount3 = amount1.subtract(amount2);
 
-		assertEquals(5, amount3.getAmount());
+		assertEquals(5, amount3.value());
 		assertTrue(amount2.equals(amount3));
 	}
 

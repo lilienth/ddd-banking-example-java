@@ -19,7 +19,7 @@ public class CreditCustomer {
 		this.firstName = firstName;
 		this.familyName = familyName;
 		this.dateOfBirth = dateOfBirth;
-		this.customerNumber = new CustomerNumber();
+		this.customerNumber = CustomerNumber.getValidCustomerNumber();
 		accountList = new ArrayList<CreditAccount>();
 		creditList = new ArrayList<Credit>();
 	}

@@ -7,21 +7,18 @@ public class Credit {
 	private Amount amountOfCredit;
 	private CreditNumber creditNumber;
 	private Status status;
+	private CreditCustomer customer;
 	private CreditAccount account;
 
-
 	public enum Status {
-		applied,
-		refused,
-		granted,
-		delayed,
-		payed
+		applied, refused, granted, delayed, payed
 	};
-	
-	public Credit(Amount amountOfCredit) {
+
+	public Credit(CreditCustomer customer, Amount amountOfCredit) {
 		super();
+		this.customer = customer;
 		this.amountOfCredit = amountOfCredit;
-		this.creditNumber = new CreditNumber();
+		this.creditNumber = CreditNumber.getValidCreditNumber();
 		this.status = Status.applied;
 	}
 
@@ -33,11 +30,14 @@ public class Credit {
 		this.amountOfCredit = amountOfCredit;
 	}
 
+	public CreditCustomer getCustomer() {
+		return customer;
+	}
 
 	public CreditNumber getCreditNumber() {
 		return creditNumber;
 	}
-	
+
 	public Status getStatus() {
 		return status;
 	}

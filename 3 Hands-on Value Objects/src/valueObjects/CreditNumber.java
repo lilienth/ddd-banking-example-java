@@ -2,24 +2,27 @@ package valueObjects;
 
 public class CreditNumber {
 	private static int creditNumberCounter = 0;
-    private final int creditNumber;
-	
-    public CreditNumber() {
-	 this.creditNumber = creditNumberCounter++;
-    }
-	    
-    public static boolean isValidAccountNumber(int number)
-    {
-    	return (number >= 0);
-    }
-    
-    public int getCreditNumber() {
-    	return this.creditNumber;
-    }
+	private final int creditNumber;
+
+	private CreditNumber() {
+		this.creditNumber = creditNumberCounter++;
+	}
+
+	public static CreditNumber getValidCreditNumber() {
+		return new CreditNumber();
+	}
+
+	public static boolean isValidAccountNumber(int number) {
+		return (number >= 0);
+	}
+
+	public int getCreditNumber() {
+		return this.creditNumber;
+	}
 
 	@Override
 	public boolean equals(Object obj) {
-		CreditNumber secondNumber = (CreditNumber)obj;
+		CreditNumber secondNumber = (CreditNumber) obj;
 		return this.creditNumber == secondNumber.creditNumber;
 	}
 
@@ -28,6 +31,5 @@ public class CreditNumber {
 		// TODO Auto-generated method stub
 		return super.hashCode();
 	}
-    
 
 }

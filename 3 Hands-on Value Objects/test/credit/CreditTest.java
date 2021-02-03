@@ -15,11 +15,11 @@ class CreditTest {
 	@Test
 	void testCreditConstruction() {
 
-		Credit credit = new Credit(new Amount(1000));
-		assertEquals(new Amount(1000), credit.getAmountOfCredit());
+		CreditCustomer customer = new CreditCustomer("Carola", "Lilienthal", LocalDate.of(1967, 9, 11));
+		Credit credit = new Credit(customer, Amount.of(1000));
+		assertEquals(Amount.of(1000), credit.getAmountOfCredit());
 		assertNotNull(credit.getCreditNumber());
 
-		CreditCustomer customer = new CreditCustomer("Carola", "Lilienthal", LocalDate.of(1967, 9, 11));
 		customer.getCreditList().add(credit);
 		assertTrue(customer.getCreditList().contains(credit));
 	}
