@@ -2,8 +2,10 @@ package accounting;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
+import valueObjects.AccountNumber;
 import valueObjects.CustomerNumber;
 
 public class Customer {
@@ -38,8 +40,33 @@ public class Customer {
 		return customerNumber;
 	}
 
-	public List<Account> getAccountList() {
-		return accountList;
+	public Account getAccount(AccountNumber accountNumber) {
+		Account account = null;
+		Iterator<Account> iterator = accountList.iterator();
+		boolean found = false;
+		while (iterator.hasNext() && !found) {
+			account = iterator.next();
+			if (account.getAccountnumber() == accountNumber) {
+				found = true;
+			}
+		}
+		return account;
+	}
+
+	public void addAccount(Account account) {
+		accountList.add(account);
+	}
+
+	public boolean hasAccount(AccountNumber accountNumber) {
+		boolean returnValue = false;
+		Iterator<Account> iterator = accountList.iterator();
+		while (iterator.hasNext() && returnValue == false) {
+			Account account = iterator.next();
+			if (account.getAccountnumber() == accountNumber) {
+				returnValue = true;
+			}
+		}
+		return returnValue;
 	}
 
 }

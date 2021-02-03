@@ -26,10 +26,6 @@ public class Credit {
 		return amountOfCredit;
 	}
 
-	public void setAmountOfCredit(Amount amountOfCredit) {
-		this.amountOfCredit = amountOfCredit;
-	}
-
 	public CreditCustomer getCustomer() {
 		return customer;
 	}
@@ -42,16 +38,13 @@ public class Credit {
 		return status;
 	}
 
-	public void setStatus(Status status) {
-		this.status = status;
+	public void grant(CreditAccount account) {
+		this.status = Status.granted;
+		this.account = account;
 	}
 
 	public CreditAccount getAccount() {
 		return account;
-	}
-
-	public void setAccount(CreditAccount account) {
-		this.account = account;
 	}
 
 }

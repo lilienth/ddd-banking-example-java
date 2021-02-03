@@ -49,11 +49,6 @@ public class AccountManagementServiceTest {
 		assertNotNull(ams.getCustomerList());
 		assertEquals(5, ams.getCustomerList().size());
 		assertEquals(10, ams.getAccountList().size());
-		int counter = 0;
-		for (Customer customer : ams.getCustomerList()) {
-			counter = counter + customer.getAccountList().size();
-		}
-		assertEquals(10, counter);
 		assertEquals(5, cs.getCreditCustomerList().size());
 		assertEquals(0, cs.getCreditAccountList().size());
 	}
@@ -88,7 +83,7 @@ public class AccountManagementServiceTest {
 		assertTrue(ams.getAccountList().contains(newAccount));
 		assertEquals(newAccount, ams.getAccount(newAccount.getAccountnumber()));
 		assertEquals(newCustomer, ams.getCustomer(newAccount.getAccountnumber()));
-		assertTrue(newCustomer.getAccountList().contains(newAccount));
+		assertTrue(newCustomer.hasAccount(newAccount.getAccountnumber()));
 		assertEquals(11, ams.getAccountList().size());
 
 		assertTrue(ams.getAccountNumberList().contains(newAccount.getAccountnumber()));

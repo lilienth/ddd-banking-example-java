@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import credit.Credit.Status;
 import valueObjects.AccountNumber;
 import valueObjects.Amount;
 import valueObjects.CreditNumber;
@@ -29,10 +28,10 @@ public class CreditService {
 
 	public CreditAccount newCreditAccount(Amount balance, Credit credit) {
 		CreditAccount account = new CreditAccount(credit);
-		account.setBalance(balance);
+		account.deposit(balance);
 		accountList.put(account.getAccountnumber(), account);
 		CreditCustomer customer = credit.getCustomer();
-		customer.getAccountList().add(account);
+		customer.addAccount(account);
 		return account;
 	}
 
@@ -46,11 +45,10 @@ public class CreditService {
 		return creditNumber;
 	}
 
-	public CreditAccount grandCredit(CreditNumber creditNumber) {
+	public CreditAccount grantCredit(CreditNumber creditNumber) {
 		Credit credit = this.getCredit(creditNumber);
-		credit.setStatus(Status.granted);
 		CreditAccount newCreditAccount = this.newCreditAccount(credit);
-		credit.setAccount(newCreditAccount);
+		credit.grant(newCreditAccount);
 		return newCreditAccount;
 	}
 
@@ -71,9 +69,7 @@ public class CreditService {
 	public void makePaymentForCredit(CreditNumber creditNumber, Amount amount) {
 		Credit credit = creditList.get(creditNumber);
 		CreditAccount creditAccount = credit.getAccount();
-		Amount balance = creditAccount.getBalance();
-		balance = balance.add(amount);
-		creditAccount.setBalance(balance);
+		creditAccount.deposit(amount);
 
 	}
 
@@ -91,7 +87,7 @@ public class CreditService {
 		CreditAccount account = new CreditAccount(credit);
 		accountList.put(account.getAccountnumber(), account);
 		CreditCustomer customer = this.getCustomerForCredit(credit);
-		customer.getAccountList().add(account);
+		customer.addAccount(account);
 		return account;
 	}
 

@@ -3,7 +3,6 @@ package accounting;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -67,17 +66,7 @@ public class AccountManagementService {
 	}
 
 	public Customer getCustomer(AccountNumber accountNumber) {
-		Customer customer = null;
-		for (Map.Entry<CustomerNumber, Customer> entry : customerList.entrySet()) {
-			List<Account> accountList = entry.getValue().getAccountList();
-			Iterator<Account> iterator = accountList.iterator();
-			while (iterator.hasNext() && customer == null) {
-				Account account = iterator.next();
-				if (account.getAccountnumber() == accountNumber) {
-					customer = entry.getValue();
-				}
-			}
-		}
+		Customer customer = accountList.get(accountNumber).getAccountowner();
 		return customer;
 	}
 

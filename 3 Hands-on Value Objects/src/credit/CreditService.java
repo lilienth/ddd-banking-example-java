@@ -46,7 +46,7 @@ public class CreditService {
 		return creditNumber;
 	}
 
-	public CreditAccount grandCredit(CreditNumber creditNumber) {
+	public CreditAccount grantCredit(CreditNumber creditNumber) {
 		Credit credit = this.getCredit(creditNumber);
 		credit.setStatus(Status.granted);
 		CreditAccount newCreditAccount = this.newCreditAccount(credit);

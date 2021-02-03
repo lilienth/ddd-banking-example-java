@@ -25,8 +25,12 @@ public class CreditAccount {
 		return accountNumber;
 	}
 
-	public void setBalance(Amount amount) {
-		this.balance = amount;
+	public void deposit(Amount amount) {
+		this.balance = balance.add(amount);
+	}
+
+	public void withdraw(Amount amount) {
+		this.balance = balance.subtract(amount);
 	}
 
 	public CreditCustomer getAccountowner() {

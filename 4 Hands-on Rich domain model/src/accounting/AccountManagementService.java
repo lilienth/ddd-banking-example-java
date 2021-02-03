@@ -3,7 +3,6 @@ package accounting;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -33,9 +32,9 @@ public class AccountManagementService {
 
 	public Account newAccount(Amount balance, Customer customer) {
 		Account account = new Account(customer);
-		account.setBalance(balance);
+		account.deposit(balance);
 		accountList.put(account.getAccountnumber(), account);
-		customer.getAccountList().add(account);
+		customer.addAccount(account);
 		return account;
 	}
 
@@ -48,13 +47,9 @@ public class AccountManagementService {
 	}
 
 	public void transferMoney(Amount amount, AccountNumber debitorAccountNumber, AccountNumber creditorAccountNumber) {
-		Amount balance = accountList.get(debitorAccountNumber).getBalance();
-		balance = balance.subtract(amount);
-		accountList.get(debitorAccountNumber).setBalance(balance);
+		accountList.get(debitorAccountNumber).withdraw(amount);
+		accountList.get(creditorAccountNumber).deposit(amount);
 
-		balance = accountList.get(creditorAccountNumber).getBalance();
-		balance = balance.add(amount);
-		accountList.get(creditorAccountNumber).setBalance(balance);
 	}
 
 	public Set<AccountNumber> getAccountNumberList() {
@@ -67,17 +62,7 @@ public class AccountManagementService {
 	}
 
 	public Customer getCustomer(AccountNumber accountNumber) {
-		Customer customer = null;
-		for (Map.Entry<CustomerNumber, Customer> entry : customerList.entrySet()) {
-			List<Account> accountList = entry.getValue().getAccountList();
-			Iterator<Account> iterator = accountList.iterator();
-			while (iterator.hasNext() && customer == null) {
-				Account account = iterator.next();
-				if (account.getAccountnumber() == accountNumber) {
-					customer = entry.getValue();
-				}
-			}
-		}
+		Customer customer = accountList.get(accountNumber).getAccountowner();
 		return customer;
 	}
 

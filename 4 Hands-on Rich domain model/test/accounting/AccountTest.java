@@ -25,7 +25,7 @@ class AccountTest {
 		Customer accountowner = new Customer("Carola", "Lilienthal", LocalDate.of(1967, 9, 11));
 		Account account = new Account(accountowner);
 		assertEquals(0, account.getBalance().value());
-		account.setBalance(Amount.of(100));
+		account.deposit(Amount.of(100));
 		assertEquals(100, account.getBalance().value());
 
 	}

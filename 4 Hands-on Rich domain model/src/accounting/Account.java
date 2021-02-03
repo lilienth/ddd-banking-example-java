@@ -19,8 +19,12 @@ public class Account {
 		return balance;
 	}
 
-	public void setBalance(Amount amount) {
-		this.balance = amount;
+	public void withdraw(Amount amount) {
+		this.balance = this.balance.subtract(amount);
+	}
+
+	public void deposit(Amount amount) {
+		this.balance = this.balance.add(amount);
 	}
 
 	public AccountNumber getAccountnumber() {

@@ -17,7 +17,6 @@ class CreditCustomerTest {
 		assertEquals("Lilienthal", customer.getFamilyName());
 		assertEquals(LocalDate.of(1967, 9, 11), customer.getDateOfBirth());
 		assertNotNull(customer.getCustomerNumber());
-		assertNotNull(customer.getAccountList());
 	}
 
 }
