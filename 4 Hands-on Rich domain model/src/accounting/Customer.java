@@ -1,24 +1,25 @@
-package models;
+package accounting;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+
+import valueObjects.CustomerNumber;
 
 public class Customer {
 	private String firstName;
 	private String familyName;
 	private LocalDate dateOfBirth;
-	private int customerNumber;
+	private CustomerNumber customerNumber;
 	private List<Account> accountList;
-	private List<Credit> creditList;
-	
-	public Customer(String firstName, String familyName, LocalDate dateOfBirth, int customerNumber) {
+
+	public Customer(String firstName, String familyName, LocalDate dateOfBirth) {
 		super();
 		this.firstName = firstName;
 		this.familyName = familyName;
 		this.dateOfBirth = dateOfBirth;
-		this.customerNumber = customerNumber;
+		this.customerNumber = CustomerNumber.getValidCustomerNumber();
 		accountList = new ArrayList<Account>();
-		creditList = new ArrayList<Credit>();
 	}
 
 	public String getFirstName() {
@@ -33,16 +34,12 @@ public class Customer {
 		return dateOfBirth;
 	}
 
-	public int getCustomerNumber() {
+	public CustomerNumber getCustomerNumber() {
 		return customerNumber;
 	}
-		
+
 	public List<Account> getAccountList() {
 		return accountList;
-	}
-
-	public List<Credit> getCreditList() {
-		return creditList;
 	}
 
 }
