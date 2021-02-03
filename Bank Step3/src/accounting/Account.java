@@ -3,27 +3,29 @@ package accounting;
 public class Account {
 	private float balance;
 	private int accountNumber;
+	private Customer accountOwner;
 
-	public Account(int accountNumber) {
+	public Account(int accountNumber, Customer accountOwner) {
 		super();
 		this.balance = 0;
 		this.accountNumber = accountNumber;
+		this.accountOwner = accountOwner;
 	}
 
 	public float getBalance() {
 		return balance;
 	}
 
-	public void withdraw(float amount) {
-		this.balance = this.balance - amount;
-	}
-	
-	public void deposit(float amount) {
-		this.balance = this.balance + amount;
+	public void setBalance(float balance) {
+		this.balance = balance;
 	}
 
 	public int getAccountnumber() {
 		return accountNumber;
 	}
-	
+
+	public Customer getAccountowner() {
+		return accountOwner;
+	}
+
 }
