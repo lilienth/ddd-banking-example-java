@@ -41,6 +41,8 @@ public class Customer {
 	}
 
 	public Account getAccount(AccountNumber accountNumber) {
+		assert accountNumber != null;
+		assert hasAccount(accountNumber);
 		Account account = null;
 		Iterator<Account> iterator = accountList.iterator();
 		boolean found = false;
@@ -58,6 +60,7 @@ public class Customer {
 	}
 
 	public boolean hasAccount(AccountNumber accountNumber) {
+		assert accountNumber != null;
 		boolean returnValue = false;
 		Iterator<Account> iterator = accountList.iterator();
 		while (iterator.hasNext() && returnValue == false) {

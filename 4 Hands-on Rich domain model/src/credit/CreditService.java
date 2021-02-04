@@ -46,6 +46,8 @@ public class CreditService {
 	}
 
 	public CreditAccount grantCredit(CreditNumber creditNumber) {
+		assert this.getCredit(creditNumber).canBeGranted();
+
 		Credit credit = this.getCredit(creditNumber);
 		CreditAccount newCreditAccount = this.newCreditAccount(credit);
 		credit.grant(newCreditAccount);
@@ -57,6 +59,8 @@ public class CreditService {
 	}
 
 	public Credit getCreditFromAccountNumber(AccountNumber accountNumber) {
+		assert accountNumber != null;
+
 		Credit credit = null;
 		for (Map.Entry<CreditNumber, Credit> entry : creditList.entrySet()) {
 			if (entry.getValue().getAccount().getAccountnumber() == accountNumber) {

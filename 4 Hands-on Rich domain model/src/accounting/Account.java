@@ -20,10 +20,13 @@ public class Account {
 	}
 
 	public void withdraw(Amount amount) {
+		assert amount != null;
+		assert amount.isLessOrEquals(this.getBalance());
 		this.balance = this.balance.subtract(amount);
 	}
 
 	public void deposit(Amount amount) {
+		assert amount != null;
 		this.balance = this.balance.add(amount);
 	}
 

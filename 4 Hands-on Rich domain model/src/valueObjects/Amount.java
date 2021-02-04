@@ -27,6 +27,10 @@ public class Amount {
 		return this.amount;
 	}
 
+	public boolean isLessOrEquals(Amount amount) {
+		return this.amount <= amount.value();
+	}
+
 	@Override
 	public boolean equals(Object obj) {
 		Amount secondAmount = (Amount) obj;

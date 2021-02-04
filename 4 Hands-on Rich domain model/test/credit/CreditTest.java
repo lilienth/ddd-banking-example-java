@@ -1,6 +1,7 @@
 package credit;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -22,5 +23,8 @@ class CreditTest {
 
 		customer.getCreditList().add(credit);
 		assertTrue(customer.getCreditList().contains(credit));
+		assertTrue(credit.canBeGranted());
+		credit.grant(new CreditAccount(credit));
+		assertFalse(credit.canBeGranted());
 	}
 }

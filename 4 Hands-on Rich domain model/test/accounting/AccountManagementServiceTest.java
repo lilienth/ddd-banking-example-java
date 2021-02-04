@@ -61,7 +61,9 @@ public class AccountManagementServiceTest {
 		Iterator<AccountNumber> iterator = accountNumbers.iterator();
 		AccountNumber debitorAccountNumber = iterator.next();
 		AccountNumber creditorAccountNumber = iterator.next();
-		Amount debitorSaldo = ams.getAccount(debitorAccountNumber).getBalance();
+		Account debitorAccount = ams.getAccount(debitorAccountNumber);
+		debitorAccount.deposit(Amount.of(3000));
+		Amount debitorSaldo = debitorAccount.getBalance();
 		Amount creditorSaldo = ams.getAccount(creditorAccountNumber).getBalance();
 		ams.transferMoney(Amount.of(100), debitorAccountNumber, creditorAccountNumber);
 		assertEquals(debitorSaldo.subtract(Amount.of(100)), ams.getAccount(debitorAccountNumber).getBalance());

@@ -39,8 +39,15 @@ public class Credit {
 	}
 
 	public void grant(CreditAccount account) {
+		assert account != null;
+		assert canBeGranted();
+
 		this.status = Status.granted;
 		this.account = account;
+	}
+
+	public boolean canBeGranted() {
+		return (this.status != Status.refused && this.status != Status.granted);
 	}
 
 	public CreditAccount getAccount() {
