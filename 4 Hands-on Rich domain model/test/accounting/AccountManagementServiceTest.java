@@ -11,8 +11,8 @@ import java.util.Set;
 import org.junit.jupiter.api.Test;
 
 import credit.CreditService;
-import valueObjects.AccountNumber;
-import valueObjects.Amount;
+import sharedKernel.AccountNumber;
+import sharedKernel.Amount;
 
 public class AccountManagementServiceTest {
 

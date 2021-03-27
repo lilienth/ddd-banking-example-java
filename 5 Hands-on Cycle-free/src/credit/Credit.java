@@ -1,7 +1,7 @@
 package credit;
 
-import valueObjects.Amount;
-import valueObjects.CreditNumber;
+import sharedKernel.Amount;
+import sharedKernel.CreditNumber;
 
 public class Credit {
 	private Amount amountOfCredit;

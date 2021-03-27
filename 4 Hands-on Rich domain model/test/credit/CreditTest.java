@@ -9,7 +9,7 @@ import java.time.LocalDate;
 
 import org.junit.jupiter.api.Test;
 
-import valueObjects.Amount;
+import sharedKernel.Amount;
 
 class CreditTest {
 

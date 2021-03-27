@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import valueObjects.AccountNumber;
-import valueObjects.CustomerNumber;
+import sharedKernel.AccountNumber;
+import sharedKernel.CustomerNumber;
 
 public class CreditCustomer {
 	private String firstName;

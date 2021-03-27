@@ -1,7 +1,4 @@
-/tests/
 /accounting/
 /credit/
-/domainValues/
+/sharedKernel/
 /valueObjects/
-/application/
-/models/

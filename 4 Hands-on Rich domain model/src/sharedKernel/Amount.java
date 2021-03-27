@@ -1,4 +1,4 @@
-package valueObjects;
+package sharedKernel;
 
 public class Amount {
 	private final float amount;

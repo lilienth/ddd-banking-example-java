@@ -1,4 +1,4 @@
-package valueObjects;
+package sharedKernel;
 
 public class CustomerNumber {
 	private static int customerNumberCounter = 0;

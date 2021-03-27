@@ -1,4 +1,4 @@
-package valueObjects;
+package sharedKernel;
 
 public class CreditNumber {
 	private static int creditNumberCounter = 0;
