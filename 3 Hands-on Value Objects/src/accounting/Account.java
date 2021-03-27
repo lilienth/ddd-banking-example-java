@@ -1,7 +1,7 @@
 package accounting;
 
-import valueObjects.AccountNumber;
-import valueObjects.Amount;
+import sharedKernel.AccountNumber;
+import sharedKernel.Amount;
 
 public class Account {
 	private Amount balance;

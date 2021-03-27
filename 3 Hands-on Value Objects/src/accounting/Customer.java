@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import valueObjects.CustomerNumber;
+import sharedKernel.CustomerNumber;
 
 public class Customer {
 	private String firstName;

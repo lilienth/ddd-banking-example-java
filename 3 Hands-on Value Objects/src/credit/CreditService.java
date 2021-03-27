@@ -8,10 +8,10 @@ import java.util.Map;
 import java.util.Set;
 
 import credit.Credit.Status;
-import valueObjects.AccountNumber;
-import valueObjects.Amount;
-import valueObjects.CreditNumber;
-import valueObjects.CustomerNumber;
+import sharedKernel.AccountNumber;
+import sharedKernel.Amount;
+import sharedKernel.CreditNumber;
+import sharedKernel.CustomerNumber;
 
 public class CreditService {
 	private Map<CustomerNumber, CreditCustomer> customerList = new HashMap<CustomerNumber, CreditCustomer>();

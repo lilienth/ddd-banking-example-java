@@ -7,8 +7,8 @@ import org.junit.jupiter.api.Test;
 
 import accounting.AccountManagementServiceTest;
 import credit.Credit.Status;
-import valueObjects.Amount;
-import valueObjects.CreditNumber;
+import sharedKernel.Amount;
+import sharedKernel.CreditNumber;
 
 class CreditServiceTest {
 
