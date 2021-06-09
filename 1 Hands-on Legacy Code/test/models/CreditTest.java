@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.time.LocalDate;
 
+import credit.Credit;
 import org.junit.jupiter.api.Test;
 
 class CreditTest {

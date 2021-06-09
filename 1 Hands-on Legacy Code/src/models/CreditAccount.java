@@ -1,5 +1,7 @@
 package models;
 
+import credit.Credit;
+
 public class CreditAccount extends Account {
 	private Credit credit;
 

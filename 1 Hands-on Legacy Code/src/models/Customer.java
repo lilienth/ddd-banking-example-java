@@ -1,4 +1,6 @@
 package models;
+import credit.Credit;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +12,7 @@ public class Customer {
 	private int customerNumber;
 	private List<Account> accountList;
 	private List<Credit> creditList;
-	
+
 	public Customer(String firstName, String familyName, LocalDate dateOfBirth, int customerNumber) {
 		super();
 		this.firstName = firstName;
@@ -36,7 +38,7 @@ public class Customer {
 	public int getCustomerNumber() {
 		return customerNumber;
 	}
-		
+
 	public List<Account> getAccountList() {
 		return accountList;
 	}

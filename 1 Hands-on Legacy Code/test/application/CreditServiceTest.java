@@ -3,10 +3,12 @@ package application;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import accounting.AccountManagementService;
+import credit.CreditService;
 import org.junit.jupiter.api.Test;
 
-import models.Credit;
-import models.Credit.Status;
+import credit.Credit;
+import credit.Credit.Status;
 import models.CreditAccount;
 
 class CreditServiceTest {
