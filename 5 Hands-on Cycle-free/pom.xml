@@ -3,7 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>fr.alpescraft.ddd</groupId>
+    <groupId>de.wps.ddd</groupId>
     <artifactId>banking</artifactId>
     <version>1.0-SNAPSHOT</version>
 
@@ -15,12 +15,9 @@
     </properties>
 
     <build>
-        <sourceDirectory>src</sourceDirectory>
-        <testSourceDirectory>test</testSourceDirectory>
-
         <plugins>
             <!-- Required with maven 3.6.0 -->
-            <!-- cf. https://dzone.com/articles/why-your-junit-5-tests-are-not-running-under-maven-->
+            <!-- cf. https://dzone.com/articles/why-your-junit-5-tests-are-not-running-under-maven -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
