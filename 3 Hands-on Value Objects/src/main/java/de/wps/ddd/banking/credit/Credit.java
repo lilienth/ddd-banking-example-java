@@ -4,21 +4,21 @@ import de.wps.ddd.banking.sharedKernel.Amount;
 import de.wps.ddd.banking.sharedKernel.CreditNumber;
 
 public class Credit {
-	private Amount amountOfCredit;
-	private CreditNumber creditNumber;
+	private final CreditNumber creditNumber;
+	private final CreditCustomer customer;
+	private final Amount amountOfCredit;
 	private Status status;
-	private CreditCustomer customer;
 	private CreditAccount account;
 
 	public enum Status {
 		applied, refused, granted, delayed, payed
-	};
+	}
 
-	public Credit(CreditCustomer customer, Amount amountOfCredit) {
+	public Credit(CreditCustomer customer, CreditNumber creditNumber, Amount amountOfCredit) {
 		super();
 		this.customer = customer;
 		this.amountOfCredit = amountOfCredit;
-		this.creditNumber = CreditNumber.getValidCreditNumber();
+		this.creditNumber = creditNumber;
 		this.status = Status.applied;
 	}
 
@@ -26,9 +26,7 @@ public class Credit {
 		return amountOfCredit;
 	}
 
-	public void setAmountOfCredit(Amount amountOfCredit) {
-		this.amountOfCredit = amountOfCredit;
-	}
+
 
 	public CreditCustomer getCustomer() {
 		return customer;

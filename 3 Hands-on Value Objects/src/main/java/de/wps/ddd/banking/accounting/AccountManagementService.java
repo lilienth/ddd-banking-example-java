@@ -1,5 +1,6 @@
 package de.wps.ddd.banking.accounting;
 
+import de.wps.ddd.banking.sharedKernel.AccountNumberFactory;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,14 +14,20 @@ import de.wps.ddd.banking.sharedKernel.Amount;
 import de.wps.ddd.banking.sharedKernel.CustomerNumber;
 
 public class AccountManagementService {
-	private Map<CustomerNumber, Customer> customerList = new HashMap<CustomerNumber, Customer>();
-	private Map<AccountNumber, Account> accountList = new HashMap<AccountNumber, Account>();
-	private CreditService creditService = null;
+	private final Map<CustomerNumber, Customer> customerList = new HashMap<>();
+	private final Map<AccountNumber, Account> accountList = new HashMap<>();
+	private final CreditService creditService;
+
+	private final AccountNumberFactory accountNumberFactory;
 
 	public AccountManagementService(CreditService creditService) {
-
-		this.creditService = creditService;
+		this(creditService, new AccountNumberFactory());
 	}
+
+	AccountManagementService(CreditService creditService, AccountNumberFactory accountNumberFactory) {
+        this.creditService = creditService;
+        this.accountNumberFactory = accountNumberFactory;
+    }
 
 	public Customer newCustomer(String firstName, String familyName, LocalDate dateOfBirth) {
 		Customer customer = new Customer(firstName, familyName, dateOfBirth);
@@ -31,7 +38,7 @@ public class AccountManagementService {
 	}
 
 	public Account newAccount(Amount balance, Customer customer) {
-		Account account = new Account(customer);
+		Account account = new Account(customer, accountNumberFactory.newAccountNumber());
 		account.setBalance(balance);
 		accountList.put(account.getAccountnumber(), account);
 		customer.getAccountList().add(account);
@@ -39,11 +46,11 @@ public class AccountManagementService {
 	}
 
 	public List<Account> getAccountList() {
-		return new ArrayList<Account>(accountList.values());
+		return new ArrayList<>(accountList.values());
 	}
 
 	public List<Customer> getCustomerList() {
-		return new ArrayList<Customer>(customerList.values());
+		return new ArrayList<>(customerList.values());
 	}
 
 	public void transferMoney(Amount amount, AccountNumber debitorAccountNumber, AccountNumber creditorAccountNumber) {

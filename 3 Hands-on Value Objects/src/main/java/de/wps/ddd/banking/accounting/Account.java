@@ -4,15 +4,14 @@ import de.wps.ddd.banking.sharedKernel.AccountNumber;
 import de.wps.ddd.banking.sharedKernel.Amount;
 
 public class Account {
+	private final AccountNumber accountNumber;
+	private final Customer accountOwner;
 	private Amount balance;
-	private AccountNumber accountNumber;
-	private Customer accountOwner;
 
-	public Account(Customer accountOwner) {
-		super();
-		this.balance = Amount.of(0);
-		this.accountNumber = AccountNumber.getValidAccountNumber();
+	public Account(Customer accountOwner, AccountNumber accountNumber) {
+		this.accountNumber = accountNumber;
 		this.accountOwner = accountOwner;
+		this.balance = Amount.of(0);
 	}
 
 	public Amount getBalance() {

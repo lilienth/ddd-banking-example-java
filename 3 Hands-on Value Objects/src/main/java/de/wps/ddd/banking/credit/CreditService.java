@@ -1,5 +1,7 @@
 package de.wps.ddd.banking.credit;
 
+import de.wps.ddd.banking.sharedKernel.AccountNumberFactory;
+import de.wps.ddd.banking.sharedKernel.CreditNumberFactory;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,12 +16,20 @@ import de.wps.ddd.banking.sharedKernel.CreditNumber;
 import de.wps.ddd.banking.sharedKernel.CustomerNumber;
 
 public class CreditService {
-	private Map<CustomerNumber, CreditCustomer> customerList = new HashMap<CustomerNumber, CreditCustomer>();
-	private Map<AccountNumber, CreditAccount> accountList = new HashMap<AccountNumber, CreditAccount>();
-	private Map<CreditNumber, Credit> creditList = new HashMap<CreditNumber, Credit>();
+	private final Map<CustomerNumber, CreditCustomer> customerList = new HashMap<>();
+	private final Map<AccountNumber, CreditAccount> accountList = new HashMap<>();
+	private final Map<CreditNumber, Credit> creditList = new HashMap<>();
+	private final AccountNumberFactory accountNumberFactory;
+	private final CreditNumberFactory creditNumberFactory;
 
 	public CreditService() {
+		this(new AccountNumberFactory(), new CreditNumberFactory());
 	}
+	CreditService(AccountNumberFactory accountNumberFactory, CreditNumberFactory creditNumberFactory) {
+		this.accountNumberFactory = accountNumberFactory;
+		this.creditNumberFactory = creditNumberFactory;
+	}
+
 
 	// should only be called by AccountManagementService
 	public void newCustomer(String firstName, String familyName, LocalDate dateOfBirth, CustomerNumber customerNumber) {
@@ -28,7 +38,7 @@ public class CreditService {
 	}
 
 	public CreditAccount newCreditAccount(Amount balance, Credit credit) {
-		CreditAccount account = new CreditAccount(credit);
+		CreditAccount account = new CreditAccount(credit, accountNumberFactory.newAccountNumber());
 		account.setBalance(balance);
 		accountList.put(account.getAccountnumber(), account);
 		CreditCustomer customer = credit.getCustomer();
@@ -37,8 +47,7 @@ public class CreditService {
 	}
 
 	public CreditNumber applyForCredit(Amount amount, CreditCustomer customer) {
-
-		Credit credit = new Credit(customer, amount);
+		Credit credit = new Credit(customer, creditNumberFactory.newCreditNumber(), amount);
 		customer.getCreditList().add(credit);
 		CreditNumber creditNumber = credit.getCreditNumber();
 		creditList.put(creditNumber, credit);
@@ -88,7 +97,7 @@ public class CreditService {
 	}
 
 	public CreditAccount newCreditAccount(Credit credit) {
-		CreditAccount account = new CreditAccount(credit);
+		CreditAccount account = new CreditAccount(credit, accountNumberFactory.newAccountNumber());
 		accountList.put(account.getAccountnumber(), account);
 		CreditCustomer customer = this.getCustomerForCredit(credit);
 		customer.getAccountList().add(account);
@@ -96,11 +105,11 @@ public class CreditService {
 	}
 
 	public List<CreditAccount> getCreditAccountList() {
-		return new ArrayList<CreditAccount>(accountList.values());
+		return new ArrayList<>(accountList.values());
 	}
 
 	public List<CreditCustomer> getCreditCustomerList() {
-		return new ArrayList<CreditCustomer>(customerList.values());
+		return new ArrayList<>(customerList.values());
 	}
 
 	public CreditAccount getCreditAccount(AccountNumber accountNumber) {

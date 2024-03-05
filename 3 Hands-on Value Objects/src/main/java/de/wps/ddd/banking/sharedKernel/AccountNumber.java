@@ -1,35 +1,39 @@
 package de.wps.ddd.banking.sharedKernel;
 
+import static de.wps.common.contracts.BaseContracts.require;
+
+import java.util.Objects;
+
+/**
+ * ValueObject, representing a syntactically valid account number
+ */
 public class AccountNumber {
-	private static int accountNumberCounter = 0;
-	private final int accountNumber;
 
-	private AccountNumber() {
-		this.accountNumber = accountNumberCounter++;
+	public static AccountNumber of(int accountNumberValue) {
+		require(accountNumberValue > 0, "accountNumberValue > 0");
+		return new AccountNumber(accountNumberValue);
 	}
 
-	public static AccountNumber getValidAccountNumber() {
-		return new AccountNumber();
+	private final int accountNumberValue;
+
+	private AccountNumber(int accountNumberValue) {
+		this.accountNumberValue = accountNumberValue;
 	}
 
-	public static boolean isValidAccountNumber(int number) {
-		return (number >= 0);
-	}
-
-	public int value() {
-		return this.accountNumber;
+	public int valueInt() {
+		return this.accountNumberValue;
 	}
 
 	@Override
-	public boolean equals(Object obj) {
-		AccountNumber secondNumber = (AccountNumber) obj;
-		return this.accountNumber == secondNumber.accountNumber;
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		AccountNumber that = (AccountNumber) o;
+		return accountNumberValue == that.accountNumberValue;
 	}
 
 	@Override
 	public int hashCode() {
-		// TODO Auto-generated method stub
-		return super.hashCode();
+		return Objects.hash(accountNumberValue);
 	}
-
 }

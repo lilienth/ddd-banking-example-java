@@ -2,6 +2,8 @@ package de.wps.ddd.banking.accounting;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import de.wps.ddd.banking.sharedKernel.AccountNumber;
+import de.wps.ddd.banking.sharedKernel.AccountNumberFactory;
 import java.time.LocalDate;
 
 import org.junit.jupiter.api.Test;
@@ -10,24 +12,23 @@ import de.wps.ddd.banking.sharedKernel.Amount;
 
 class AccountTest {
 
+	private final static AccountNumber ACCOUNT_NUMBER = new AccountNumberFactory().newAccountNumber();
+
 	@Test
 	void testAccountConstruction() {
-
-		Customer accountowner = new Customer("Carola", "Lilienthal", LocalDate.of(1967, 9, 11));
-		Account account = new Account(accountowner);
-		assertEquals(1, account.getAccountnumber().value());
+		Customer accountOwner = new Customer("Carola", "Lilienthal", LocalDate.of(1967, 9, 11));
+		Account account = new Account(accountOwner, ACCOUNT_NUMBER);
+		assertEquals(ACCOUNT_NUMBER, account.getAccountnumber());
 		assertEquals(0, account.getBalance().value());
-		assertEquals(accountowner, account.getAccountowner());
+		assertEquals(accountOwner, account.getAccountowner());
 	}
 
 	@Test
 	void testBalanceAccount() {
-		Customer accountowner = new Customer("Carola", "Lilienthal", LocalDate.of(1967, 9, 11));
-		Account account = new Account(accountowner);
+		Customer accountOwner = new Customer("Carola", "Lilienthal", LocalDate.of(1967, 9, 11));
+		Account account = new Account(accountOwner, ACCOUNT_NUMBER);
 		assertEquals(0, account.getBalance().value());
 		account.setBalance(Amount.of(100));
 		assertEquals(100, account.getBalance().value());
-
 	}
-
 }

@@ -1,5 +1,7 @@
 package de.wps.ddd.banking.sharedKernel;
 
+import java.util.Objects;
+
 public class CustomerNumber {
 	private static int customerNumberCounter = 0;
 	private final int customerNumber;
@@ -21,15 +23,15 @@ public class CustomerNumber {
 	}
 
 	@Override
-	public boolean equals(Object obj) {
-		CustomerNumber secondNumber = (CustomerNumber) obj;
-		return this.customerNumber == secondNumber.customerNumber;
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		CustomerNumber that = (CustomerNumber) o;
+		return customerNumber == that.customerNumber;
 	}
 
 	@Override
 	public int hashCode() {
-		// TODO Auto-generated method stub
-		return super.hashCode();
+		return Objects.hash(customerNumber);
 	}
-
 }

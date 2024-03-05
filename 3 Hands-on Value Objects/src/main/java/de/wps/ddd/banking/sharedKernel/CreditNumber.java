@@ -1,35 +1,36 @@
 package de.wps.ddd.banking.sharedKernel;
 
+import static de.wps.common.contracts.BaseContracts.require;
+
+import java.util.Objects;
+
 public class CreditNumber {
-	private static int creditNumberCounter = 0;
-	private final int creditNumber;
 
-	private CreditNumber() {
-		this.creditNumber = creditNumberCounter++;
+	public static CreditNumber of(int creditNumberValue) {
+		require(creditNumberValue > 0, "creditNumberValue > 0");
+		return new CreditNumber(creditNumberValue);
 	}
 
-	public static CreditNumber getValidCreditNumber() {
-		return new CreditNumber();
+	private final int creditNumberValue;
+
+	private CreditNumber(int creditNumberValue) {
+		this.creditNumberValue = creditNumberValue;
 	}
 
-	public static boolean isValidAccountNumber(int number) {
-		return (number >= 0);
-	}
-
-	public int getCreditNumber() {
-		return this.creditNumber;
+	public int valueInt() {
+		return this.creditNumberValue;
 	}
 
 	@Override
-	public boolean equals(Object obj) {
-		CreditNumber secondNumber = (CreditNumber) obj;
-		return this.creditNumber == secondNumber.creditNumber;
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		CreditNumber that = (CreditNumber) o;
+		return creditNumberValue == that.creditNumberValue;
 	}
 
 	@Override
 	public int hashCode() {
-		// TODO Auto-generated method stub
-		return super.hashCode();
+		return Objects.hash(creditNumberValue);
 	}
-
 }

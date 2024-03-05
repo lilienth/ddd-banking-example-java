@@ -5,16 +5,14 @@ import de.wps.ddd.banking.sharedKernel.Amount;
 
 public class CreditAccount {
 	private Amount balance;
-	private AccountNumber accountNumber;
-	private CreditCustomer accountOwner;
-	private Credit credit;
+	private final AccountNumber accountNumber;
+	private final CreditCustomer accountOwner;
 
-	public CreditAccount(Credit credit) {
+	public CreditAccount(Credit credit, AccountNumber accountNumber) {
 		super();
-		this.credit = credit;
-		this.balance = Amount.of(0).subtract(this.credit.getAmountOfCredit());
-		this.accountNumber = AccountNumber.getValidAccountNumber();
+		this.accountNumber = accountNumber;
 		this.accountOwner = credit.getCustomer();
+		this.balance = Amount.of(0).subtract(credit.getAmountOfCredit());
 	}
 
 	public Amount getBalance() {
@@ -29,7 +27,7 @@ public class CreditAccount {
 		this.balance = amount;
 	}
 
-	public CreditCustomer getAccountowner() {
+	public CreditCustomer getAccountOwner() {
 		return accountOwner;
 	}
 
