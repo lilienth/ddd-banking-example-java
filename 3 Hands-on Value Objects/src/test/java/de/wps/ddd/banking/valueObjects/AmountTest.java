@@ -14,10 +14,10 @@ class AmountTest {
 	@Test
 	void testCreation() {
 		assertTrue(Amount.isValidAmount(100));
-		assertFalse(Amount.isValidAmount(-100));
+		assertTrue(Amount.isValidAmount(-100));
 		assertTrue(Amount.isValidAmount(0));
 		assertTrue(Amount.isValidAmount(1));
-		assertFalse(Amount.isValidAmount(-1));
+		assertTrue(Amount.isValidAmount(-1));
 
 		Amount amount = Amount.of(10);
 		assertNotNull(amount);

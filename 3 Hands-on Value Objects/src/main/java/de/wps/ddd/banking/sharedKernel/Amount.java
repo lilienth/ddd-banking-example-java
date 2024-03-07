@@ -2,10 +2,24 @@ package de.wps.ddd.banking.sharedKernel;
 
 import java.util.Objects;
 
+/**
+ * ValueObject, representing a syntactically valid amount
+ *
+ * <p>Implemented as a class with:</p>
+ * <ul>
+ *     <li>isValid method to check for validity</li>
+ *     <li>private constructor and  a factory method "of" to control object creation and decouple external and internal representation</li>
+ *     <li>equals/hashCode based on the internal int value</li>
+ * </ul>
+ *
+ * @see CustomerNumber for an alternative way of implementing value objects
+ * @see CreditNumber for an alternative way of implementing value objects
+ */
 public class Amount {
 
 	public static boolean isValidAmount(float amount) {
-		return (amount >= 0);
+		// All float values are considered valid
+		return true;
 	}
 
 	public static Amount of(float amount) {

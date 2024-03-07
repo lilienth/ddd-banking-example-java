@@ -73,7 +73,7 @@ public class CreditService {
 	public Credit getCreditFromAccountNumber(AccountNumber accountNumber) {
 		Credit credit = null;
 		for (Map.Entry<CreditNumber, Credit> entry : creditList.entrySet()) {
-			if (entry.getValue().getAccount().getAccountnumber() == accountNumber) {
+			if (entry.getValue().getAccount().getAccountnumber().equals(accountNumber)) {
 				credit = entry.getValue();
 			}
 		}
