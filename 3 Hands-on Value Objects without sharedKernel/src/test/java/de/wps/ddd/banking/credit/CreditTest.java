@@ -10,14 +10,16 @@ import org.junit.jupiter.api.Test;
 
 class CreditTest {
 
+	public static final CreditNumber CREDIT_NUMBER = CreditNumber.of(7);
+
 	@Test
 	void testCreditConstruction() {
 
 		CreditCustomer customer = new CreditCustomer("Carola", "Lilienthal", LocalDate.of(1967, 9, 11),
-				CustomerNumber.getValidCustomerNumber(5));
-		Credit credit = new Credit(customer, Amount.of(1000));
+				new CustomerNumber(5));
+		Credit credit = new Credit(CREDIT_NUMBER, customer, Amount.of(1000));
 		assertEquals(Amount.of(1000), credit.getAmountOfCredit());
-		assertNotNull(credit.getCreditNumber());
+		assertEquals(CREDIT_NUMBER, credit.getCreditNumber());
 
 		customer.getCreditList().add(credit);
 		assertTrue(customer.getCreditList().contains(credit));

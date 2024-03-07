@@ -6,11 +6,11 @@ public class CreditAccount {
 	private CreditCustomer accountOwner;
 	private Credit credit;
 
-	public CreditAccount(Credit credit) {
+	public CreditAccount(Credit credit, AccountNumber accountNumber) {
 		super();
 		this.credit = credit;
 		this.balance = Amount.of(0).subtract(this.credit.getAmountOfCredit());
-		this.accountNumber = AccountNumber.getValidAccountNumber();
+		this.accountNumber = accountNumber;
 		this.accountOwner = credit.getCustomer();
 	}
 

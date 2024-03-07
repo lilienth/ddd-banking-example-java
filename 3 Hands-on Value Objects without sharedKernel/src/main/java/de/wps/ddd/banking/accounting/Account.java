@@ -5,10 +5,10 @@ public class Account {
 	private AccountNumber accountNumber;
 	private Customer accountOwner;
 
-	public Account(Customer accountOwner) {
+	public Account(Customer accountOwner, AccountNumber accountNumber) {
 		super();
 		this.balance = Amount.of(0);
-		this.accountNumber = AccountNumber.getValidAccountNumber();
+		this.accountNumber = accountNumber;
 		this.accountOwner = accountOwner;
 	}
 

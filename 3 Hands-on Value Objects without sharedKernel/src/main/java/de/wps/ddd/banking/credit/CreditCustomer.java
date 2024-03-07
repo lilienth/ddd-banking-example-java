@@ -18,8 +18,8 @@ public class CreditCustomer {
 		this.familyName = familyName;
 		this.dateOfBirth = dateOfBirth;
 		this.customerNumber = number;
-		accountList = new ArrayList<CreditAccount>();
-		creditList = new ArrayList<Credit>();
+		accountList = new ArrayList<>();
+		creditList = new ArrayList<>();
 	}
 
 	public String getFirstName() {

@@ -12,23 +12,31 @@ import de.wps.ddd.banking.credit.CreditService;
 public class AccountManagementService {
 	private Map<CustomerNumber, Customer> customerList = new HashMap<CustomerNumber, Customer>();
 	private Map<AccountNumber, Account> accountList = new HashMap<AccountNumber, Account>();
-	private CreditService creditService = null;
+	private final CreditService creditService;
+	private final AccountNumberFactory accountNumberFactory;
+
+	private final CustomerNumberFactory customerNumberFactory;
 
 	public AccountManagementService(CreditService creditService) {
-
-		this.creditService = creditService;
+		this(creditService, new AccountNumberFactory(), new CustomerNumberFactory());
 	}
 
+	AccountManagementService(CreditService creditService, AccountNumberFactory accountNumberFactory, CustomerNumberFactory customerNumberFactory) {
+        this.creditService = creditService;
+        this.accountNumberFactory = accountNumberFactory;
+        this.customerNumberFactory = customerNumberFactory;
+    }
+
 	public Customer newCustomer(String firstName, String familyName, LocalDate dateOfBirth) {
-		Customer customer = new Customer(firstName, familyName, dateOfBirth);
+		Customer customer = new Customer(customerNumberFactory.newCustomerNumber(), firstName, familyName, dateOfBirth);
 		customerList.put(customer.getCustomerNumber(), customer);
 		creditService.newCustomer(customer.getFirstName(), customer.getFamilyName(), customer.getDateOfBirth(),
-				customer.getCustomerNumber().getCustomerNumber());
+				customer.getCustomerNumber().customerNumberValue());
 		return customer;
 	}
 
 	public Account newAccount(Amount balance, Customer customer) {
-		Account account = new Account(customer);
+		Account account = new Account(customer, accountNumberFactory.newAccountNumber());
 		account.setBalance(balance);
 		accountList.put(account.getAccountnumber(), account);
 		customer.getAccountList().add(account);

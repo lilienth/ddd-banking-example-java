@@ -13,7 +13,7 @@ class CreditCustomerTest {
 	void testCustomerConstruction() {
 
 		CreditCustomer customer = new CreditCustomer("Carola", "Lilienthal", LocalDate.of(1967, 9, 11),
-				CustomerNumber.getValidCustomerNumber(5));
+				new CustomerNumber(5));
 		assertEquals("Carola", customer.getFirstName());
 		assertEquals("Lilienthal", customer.getFamilyName());
 		assertEquals(LocalDate.of(1967, 9, 11), customer.getDateOfBirth());

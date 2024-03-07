@@ -8,24 +8,28 @@ import java.util.Map;
 import java.util.Set;
 
 import de.wps.ddd.banking.credit.Credit.Status;
+import org.checkerframework.checker.units.qual.C;
 
 public class CreditService {
-	private Map<CustomerNumber, CreditCustomer> customerList = new HashMap<CustomerNumber, CreditCustomer>();
-	private Map<AccountNumber, CreditAccount> accountList = new HashMap<AccountNumber, CreditAccount>();
-	private Map<CreditNumber, Credit> creditList = new HashMap<CreditNumber, Credit>();
+	private Map<CustomerNumber, CreditCustomer> customerList = new HashMap<>();
+	private Map<AccountNumber, CreditAccount> accountList = new HashMap<>();
+	private Map<CreditNumber, Credit> creditList = new HashMap<>();
+
+	private final CreditNumberFactory creditNumberFactory;
 
 	public CreditService() {
+		creditNumberFactory = new CreditNumberFactory();
 	}
 
 	// should only be called by AccountManagementService
 	public void newCustomer(String firstName, String familyName, LocalDate dateOfBirth, int customerNumber) {
-		CustomerNumber number = CustomerNumber.getValidCustomerNumber(customerNumber);
+		CustomerNumber number = new CustomerNumber(customerNumber);
 		customerList.put(number, new CreditCustomer(firstName, familyName, dateOfBirth, number));
 
 	}
 
-	public CreditAccount newCreditAccount(Amount balance, Credit credit) {
-		CreditAccount account = new CreditAccount(credit);
+	public CreditAccount newCreditAccount(Amount balance, Credit credit, AccountNumber accountNumber) {
+		CreditAccount account = new CreditAccount(credit, accountNumber);
 		account.setBalance(balance);
 		accountList.put(account.getAccountnumber(), account);
 		CreditCustomer customer = credit.getCustomer();
@@ -35,7 +39,7 @@ public class CreditService {
 
 	public CreditNumber applyForCredit(Amount amount, CreditCustomer customer) {
 
-		Credit credit = new Credit(customer, amount);
+		Credit credit = new Credit(creditNumberFactory.newCreditNumber(), customer, amount);
 		customer.getCreditList().add(credit);
 		CreditNumber creditNumber = credit.getCreditNumber();
 		creditList.put(creditNumber, credit);
@@ -43,10 +47,10 @@ public class CreditService {
 		return creditNumber;
 	}
 
-	public CreditAccount grantCredit(CreditNumber creditNumber) {
+	public CreditAccount grantCredit(CreditNumber creditNumber, AccountNumber accountNumber) {
 		Credit credit = this.getCredit(creditNumber);
 		credit.setStatus(Status.granted);
-		CreditAccount newCreditAccount = this.newCreditAccount(credit);
+		CreditAccount newCreditAccount = this.newCreditAccount(credit, accountNumber);
 		credit.setAccount(newCreditAccount);
 		return newCreditAccount;
 	}
@@ -58,7 +62,7 @@ public class CreditService {
 	public Credit getCreditFromAccountNumber(AccountNumber accountNumber) {
 		Credit credit = null;
 		for (Map.Entry<CreditNumber, Credit> entry : creditList.entrySet()) {
-			if (entry.getValue().getAccount().getAccountnumber() == accountNumber) {
+			if (entry.getValue().getAccount().getAccountnumber().equals(accountNumber)) {
 				credit = entry.getValue();
 			}
 		}
@@ -84,8 +88,8 @@ public class CreditService {
 		return customer;
 	}
 
-	public CreditAccount newCreditAccount(Credit credit) {
-		CreditAccount account = new CreditAccount(credit);
+	public CreditAccount newCreditAccount(Credit credit, AccountNumber accountNumber) {
+		CreditAccount account = new CreditAccount(credit, accountNumber);
 		accountList.put(account.getAccountnumber(), account);
 		CreditCustomer customer = this.getCustomerForCredit(credit);
 		customer.getAccountList().add(account);

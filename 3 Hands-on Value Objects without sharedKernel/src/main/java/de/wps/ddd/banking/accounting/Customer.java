@@ -11,13 +11,13 @@ public class Customer {
 	private CustomerNumber customerNumber;
 	private List<Account> accountList;
 
-	public Customer(String firstName, String familyName, LocalDate dateOfBirth) {
+	public Customer(CustomerNumber customerNumber, String firstName, String familyName, LocalDate dateOfBirth) {
 		super();
 		this.firstName = firstName;
 		this.familyName = familyName;
 		this.dateOfBirth = dateOfBirth;
-		this.customerNumber = CustomerNumber.getValidCustomerNumber();
-		accountList = new ArrayList<Account>();
+		this.customerNumber = customerNumber;
+		accountList = new ArrayList<>();
 	}
 
 	public String getFirstName() {

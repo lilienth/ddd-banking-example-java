@@ -1,35 +1,29 @@
 package de.wps.ddd.banking.accounting;
 
-public class CustomerNumber {
-	private static int customerNumberCounter = 0;
-	private final int customerNumber;
+import static de.wps.common.contracts.BaseContracts.require;
 
-	private CustomerNumber() {
-		this.customerNumber = customerNumberCounter++;
+/**
+ * ValueObject, representing a syntactically valid customer number
+ *
+ * <p>Implemented as a record with:</p>
+ * <ul>
+ *     <li>isValid method to check validity</li>
+ *     <li>a public constructor directly coupled to the internal representation</li>
+ *     <li>validation implemented in the compact constructor</li>
+ *     <li>default method to access the internal representation</li>
+ *     <li>equals/hashCode automatically based on the internal int value</li>
+ * </ul>
+ *
+ * @param customerNumberValue internal value of the customer number
+ * @see de.wps.ddd.banking.credit.CreditNumber
+ * @see AccountNumber
+ */
+public record CustomerNumber(int customerNumberValue) {
+	public CustomerNumber {
+		require(isValid(customerNumberValue), "isValid(customerNumberValue)");
 	}
 
-	public static CustomerNumber getValidCustomerNumber() {
-		return new CustomerNumber();
+	public static boolean isValid(int customerNumberValue) {
+		return customerNumberValue > 0;
 	}
-
-	public static boolean isValidAccountNumber(int number) {
-		return (number >= 0);
-	}
-
-	public int getCustomerNumber() {
-		return this.customerNumber;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		CustomerNumber secondNumber = (CustomerNumber) obj;
-		return this.customerNumber == secondNumber.customerNumber;
-	}
-
-	@Override
-	public int hashCode() {
-		// TODO Auto-generated method stub
-		return super.hashCode();
-	}
-
 }

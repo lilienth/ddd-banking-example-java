@@ -11,11 +11,11 @@ public class Credit {
 		applied, refused, granted, delayed, payed
 	};
 
-	public Credit(CreditCustomer customer, Amount amountOfCredit) {
+	public Credit(CreditNumber creditNumber, CreditCustomer customer, Amount amountOfCredit) {
 		super();
 		this.customer = customer;
 		this.amountOfCredit = amountOfCredit;
-		this.creditNumber = CreditNumber.getValidCreditNumber();
+		this.creditNumber = creditNumber;
 		this.status = Status.applied;
 	}
 
