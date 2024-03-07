@@ -14,14 +14,14 @@ public class CreditCustomer {
 	private List<CreditAccount> accountList;
 	private List<Credit> creditList;
 
-	public CreditCustomer(String firstName, String familyName, LocalDate dateOfBirth) {
+	public CreditCustomer(CustomerNumber customerNumber, String firstName, String familyName, LocalDate dateOfBirth) {
 		super();
 		this.firstName = firstName;
 		this.familyName = familyName;
 		this.dateOfBirth = dateOfBirth;
-		this.customerNumber = CustomerNumber.getValidCustomerNumber();
-		accountList = new ArrayList<CreditAccount>();
-		creditList = new ArrayList<Credit>();
+		this.customerNumber = customerNumber;
+		accountList = new ArrayList<>();
+		creditList = new ArrayList<>();
 	}
 
 	public String getFirstName() {

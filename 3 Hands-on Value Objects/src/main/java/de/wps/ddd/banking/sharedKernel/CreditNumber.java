@@ -2,35 +2,30 @@ package de.wps.ddd.banking.sharedKernel;
 
 import static de.wps.common.contracts.BaseContracts.require;
 
-import java.util.Objects;
+/**
+ * ValueObject representing a syntactically valid credit numbers
+ *
+ * <p>Implemented as a record with:</p>
+ * <ul>
+ *     <li>isValid method to check for validity</li>
+ *     <li>a factory method "of" to try to control object creation and decouple external and internal representation</li>
+ *     <li>public default record constructor, which must not be used directly, see ArchUnit-Test</li>
+ *     <li>equals/hashCode based on the internal int value</li>
+ * </ul>
+ * @see CustomerNumber for an alternative way of implementing value objects
+ * @see AccountNumber for an alternative way of implementing value objects
+ */
+public record CreditNumber(int creditNumberValue) {
 
-public class CreditNumber {
-
+	public static boolean isValid(int creditNumberValue) {
+		return creditNumberValue > 0;
+	}
 	public static CreditNumber of(int creditNumberValue) {
-		require(creditNumberValue > 0, "creditNumberValue > 0");
+		require(isValid(creditNumberValue), "isValid(creditNumberValue)");
 		return new CreditNumber(creditNumberValue);
 	}
 
-	private final int creditNumberValue;
-
-	private CreditNumber(int creditNumberValue) {
-		this.creditNumberValue = creditNumberValue;
-	}
-
-	public int valueInt() {
-		return this.creditNumberValue;
-	}
-
-	@Override
-	public boolean equals(Object o) {
-		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
-		CreditNumber that = (CreditNumber) o;
-		return creditNumberValue == that.creditNumberValue;
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(creditNumberValue);
+	public int value() {
+		return creditNumberValue;
 	}
 }

@@ -1,6 +1,7 @@
 package de.wps.ddd.banking.accounting;
 
 import de.wps.ddd.banking.sharedKernel.AccountNumberFactory;
+import de.wps.ddd.banking.sharedKernel.CustomerNumberFactory;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,18 +20,20 @@ public class AccountManagementService {
 	private final CreditService creditService;
 
 	private final AccountNumberFactory accountNumberFactory;
+	private final CustomerNumberFactory customerNumberFactory;
 
 	public AccountManagementService(CreditService creditService) {
-		this(creditService, new AccountNumberFactory());
+		this(creditService, new AccountNumberFactory(), new CustomerNumberFactory());
 	}
 
-	AccountManagementService(CreditService creditService, AccountNumberFactory accountNumberFactory) {
+	AccountManagementService(CreditService creditService, AccountNumberFactory accountNumberFactory, CustomerNumberFactory customerNumberFactory) {
         this.creditService = creditService;
         this.accountNumberFactory = accountNumberFactory;
+        this.customerNumberFactory = customerNumberFactory;
     }
 
 	public Customer newCustomer(String firstName, String familyName, LocalDate dateOfBirth) {
-		Customer customer = new Customer(firstName, familyName, dateOfBirth);
+		Customer customer = new Customer(customerNumberFactory.newCustomerNumber(), firstName, familyName, dateOfBirth);
 		customerList.put(customer.getCustomerNumber(), customer);
 		creditService.newCustomer(customer.getFirstName(), customer.getFamilyName(), customer.getDateOfBirth(),
 				customer.getCustomerNumber());

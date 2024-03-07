@@ -10,7 +10,7 @@ class CreditNumberTest {
     void of() {
         CreditNumber creditNumber = CreditNumber.of(5);
         assertNotNull(creditNumber);
-        assertEquals(5, creditNumber.valueInt());
+        assertEquals(5, creditNumber.creditNumberValue());
     }
     @Test
     void ofInvalid() {

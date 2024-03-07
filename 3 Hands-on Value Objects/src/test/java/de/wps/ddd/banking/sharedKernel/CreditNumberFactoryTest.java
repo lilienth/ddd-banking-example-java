@@ -14,7 +14,7 @@ class CreditNumberFactoryTest {
         assertNotNull(creditNumber);
         assertTrue(objectUnderTest.isKnownCreditNumber(creditNumber));
 
-        int maxCreditNumber = creditNumber.valueInt();
+        int maxCreditNumber = creditNumber.creditNumberValue();
         assertFalse(objectUnderTest.isKnownCreditNumber(CreditNumber.of(maxCreditNumber + 1)));
     }
 }
