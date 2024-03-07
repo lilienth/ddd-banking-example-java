@@ -32,6 +32,10 @@
     <build>
         <plugins>
             <plugin>
+                <!--
+                Plugin is used to create or update a Sonargraph system configuration.
+                run ".\mvnw.cmd verify sonargraph:create-or-update-system"
+                -->
                 <groupId>com.hello2morrow</groupId>
                 <artifactId>sonargraph-maven-plugin</artifactId>
             </plugin>
