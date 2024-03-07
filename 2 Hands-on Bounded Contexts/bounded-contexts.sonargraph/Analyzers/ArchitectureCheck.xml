@@ -1,0 +1,4 @@
+<?xml version="1.0" ?>
+<analyzerConfiguration version="13.5.0.838" analyzer="ArchitectureCheck">
+	<stringEntry value="" name="./BoundedContexts.arc"></stringEntry>
+</analyzerConfiguration>
