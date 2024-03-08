@@ -76,4 +76,8 @@ public class CreditCustomer {
 		return List.copyOf(creditList);
 	}
 
+	public void addCredit(Credit credit) {
+		requireNotNull(credit, "credit");
+		creditList.add(credit);
+	}
 }

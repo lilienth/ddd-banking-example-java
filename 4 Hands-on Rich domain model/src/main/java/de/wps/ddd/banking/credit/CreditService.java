@@ -51,7 +51,7 @@ public class CreditService {
 	public CreditNumber applyForCredit(Amount amount, CreditCustomer customer) {
 
 		Credit credit = new Credit(creditNumberFactory.newCreditNumber(), customer, amount);
-		customer.getCreditList().add(credit);
+		customer.addCredit(credit);
 		CreditNumber creditNumber = credit.getCreditNumber();
 		creditList.put(creditNumber, credit);
 

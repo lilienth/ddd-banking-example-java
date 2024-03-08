@@ -30,7 +30,7 @@ class CreditTest {
 		assertEquals(Amount.of(1000), credit.getAmountOfCredit());
 		assertNotNull(credit.getCreditNumber());
 
-		customer.getCreditList().add(credit);
+		customer.addCredit(credit);
 		assertTrue(customer.getCreditList().contains(credit));
 		assertTrue(credit.canBeGranted());
 		credit.grant(new CreditAccount(AccountNumber.of(3), credit));
