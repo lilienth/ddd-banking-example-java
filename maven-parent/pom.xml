@@ -36,7 +36,13 @@
             <dependency>
                 <groupId>de.wps.common</groupId>
                 <artifactId>common-contracts</artifactId>
-                <version>0.3</version>
+                <version>0.4</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.checkerframework</groupId>
+                        <artifactId>checker-qual</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
             <dependency>
                 <groupId>com.tngtech.archunit</groupId>

@@ -1,10 +1,13 @@
 package de.wps.ddd.banking.credit;
 
+import de.wps.ddd.banking.sharedKernel.AccountNumberFactory;
+import de.wps.ddd.banking.sharedKernel.CreditNumberFactory;
+import de.wps.ddd.banking.sharedKernel.CustomerNumberFactory;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 
 import de.wps.ddd.banking.sharedKernel.AccountNumber;
@@ -13,23 +16,33 @@ import de.wps.ddd.banking.sharedKernel.CreditNumber;
 import de.wps.ddd.banking.sharedKernel.CustomerNumber;
 
 public class CreditService {
-	private Map<CustomerNumber, CreditCustomer> customerList = new HashMap<CustomerNumber, CreditCustomer>();
-	private Map<AccountNumber, CreditAccount> accountList = new HashMap<AccountNumber, CreditAccount>();
-	private Map<CreditNumber, Credit> creditList = new HashMap<CreditNumber, Credit>();
+	private Map<CustomerNumber, CreditCustomer> customerList = new HashMap<>();
+	private Map<AccountNumber, CreditAccount> accountList = new HashMap<>();
+	private Map<CreditNumber, Credit> creditList = new HashMap<>();
+	private final CreditNumberFactory creditNumberFactory;
+	private final AccountNumberFactory accountNumberFactory;
+	private final CustomerNumberFactory customerNumberFactory;
 
 	public CreditService() {
+		this(new CreditNumberFactory(), new AccountNumberFactory(), new CustomerNumberFactory());
 	}
+
+	CreditService(CreditNumberFactory creditNumberFactory, AccountNumberFactory accountNumberFactory, CustomerNumberFactory customerNumberFactory) {
+        this.creditNumberFactory = creditNumberFactory;
+        this.accountNumberFactory = accountNumberFactory;
+        this.customerNumberFactory = customerNumberFactory;
+    }
 
 	// should only be called by AccountManagementService
 	public void newCustomer(String firstName, String familyName, LocalDate dateOfBirth, CustomerNumber customerNumber) {
-		customerList.put(customerNumber, new CreditCustomer(firstName, familyName, dateOfBirth));
+		customerList.put(customerNumber, new CreditCustomer(customerNumberFactory.newCustomerNumber(), firstName, familyName, dateOfBirth));
 
 	}
 
 	public CreditAccount newCreditAccount(Amount balance, Credit credit) {
-		CreditAccount account = new CreditAccount(credit);
+		CreditAccount account = new CreditAccount(accountNumberFactory.newAccountNumber(), credit);
 		account.deposit(balance);
-		accountList.put(account.getAccountnumber(), account);
+		accountList.put(account.getAccountNumber(), account);
 		CreditCustomer customer = credit.getCustomer();
 		customer.addAccount(account);
 		return account;
@@ -37,7 +50,7 @@ public class CreditService {
 
 	public CreditNumber applyForCredit(Amount amount, CreditCustomer customer) {
 
-		Credit credit = new Credit(customer, amount);
+		Credit credit = new Credit(creditNumberFactory.newCreditNumber(), customer, amount);
 		customer.getCreditList().add(credit);
 		CreditNumber creditNumber = credit.getCreditNumber();
 		creditList.put(creditNumber, credit);
@@ -63,7 +76,8 @@ public class CreditService {
 
 		Credit credit = null;
 		for (Map.Entry<CreditNumber, Credit> entry : creditList.entrySet()) {
-			if (entry.getValue().getAccount().getAccountnumber() == accountNumber) {
+			Optional<CreditAccount> account = entry.getValue().getAccount();
+			if (account.isPresent() && account.get().getAccountNumber().equals(accountNumber)) {
 				credit = entry.getValue();
 			}
 		}
@@ -72,7 +86,7 @@ public class CreditService {
 
 	public void makePaymentForCredit(CreditNumber creditNumber, Amount amount) {
 		Credit credit = creditList.get(creditNumber);
-		CreditAccount creditAccount = credit.getAccount();
+		CreditAccount creditAccount = credit.getAccount().orElseThrow();
 		creditAccount.deposit(amount);
 
 	}
@@ -88,19 +102,19 @@ public class CreditService {
 	}
 
 	public CreditAccount newCreditAccount(Credit credit) {
-		CreditAccount account = new CreditAccount(credit);
-		accountList.put(account.getAccountnumber(), account);
+		CreditAccount account = new CreditAccount(accountNumberFactory.newAccountNumber(), credit);
+		accountList.put(account.getAccountNumber(), account);
 		CreditCustomer customer = this.getCustomerForCredit(credit);
 		customer.addAccount(account);
 		return account;
 	}
 
 	public List<CreditAccount> getCreditAccountList() {
-		return new ArrayList<CreditAccount>(accountList.values());
+		return List.copyOf(accountList.values());
 	}
 
 	public List<CreditCustomer> getCreditCustomerList() {
-		return new ArrayList<CreditCustomer>(customerList.values());
+		return List.copyOf(customerList.values());
 	}
 
 	public CreditAccount getCreditAccount(AccountNumber accountNumber) {

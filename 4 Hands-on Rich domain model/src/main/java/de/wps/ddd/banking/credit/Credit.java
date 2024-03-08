@@ -1,24 +1,30 @@
 package de.wps.ddd.banking.credit;
 
+import static de.wps.common.contracts.BaseContracts.require;
+import static de.wps.common.contracts.BaseContracts.requireNotNull;
+
 import de.wps.ddd.banking.sharedKernel.Amount;
 import de.wps.ddd.banking.sharedKernel.CreditNumber;
+import java.util.Optional;
 
 public class Credit {
-	private Amount amountOfCredit;
-	private CreditNumber creditNumber;
-	private Status status;
-	private CreditCustomer customer;
+	private final Amount amountOfCredit;
+	private final CreditNumber creditNumber;
+	private final CreditCustomer customer;
 	private CreditAccount account;
+	private Status status;
 
 	public enum Status {
 		applied, refused, granted, delayed, payed
-	};
+	}
 
-	public Credit(CreditCustomer customer, Amount amountOfCredit) {
-		super();
+	public Credit(CreditNumber creditNumber, CreditCustomer customer, Amount amountOfCredit) {
+		requireNotNull(creditNumber, "creditNumber");
+		requireNotNull(customer, "customer");
+		requireNotNull(amountOfCredit, "amountOfCredit");
 		this.customer = customer;
 		this.amountOfCredit = amountOfCredit;
-		this.creditNumber = CreditNumber.getValidCreditNumber();
+		this.creditNumber = creditNumber;
 		this.status = Status.applied;
 	}
 
@@ -39,8 +45,8 @@ public class Credit {
 	}
 
 	public void grant(CreditAccount account) {
-		assert account != null;
-		assert canBeGranted();
+		requireNotNull(account, "account");
+		require(canBeGranted(), "canBeGranted()");
 
 		this.status = Status.granted;
 		this.account = account;
@@ -50,8 +56,8 @@ public class Credit {
 		return (this.status != Status.refused && this.status != Status.granted);
 	}
 
-	public CreditAccount getAccount() {
-		return account;
+	public Optional<CreditAccount> getAccount() {
+		return Optional.ofNullable(account);
 	}
 
 }

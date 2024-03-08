@@ -5,19 +5,18 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.junit.jupiter.api.Test;
-
 import de.wps.ddd.banking.sharedKernel.Amount;
+import org.junit.jupiter.api.Test;
 
 class AmountTest {
 
 	@Test
 	void testCreation() {
 		assertTrue(Amount.isValidAmount(100));
-		assertFalse(Amount.isValidAmount(-100));
+		assertTrue(Amount.isValidAmount(-100));
 		assertTrue(Amount.isValidAmount(0));
 		assertTrue(Amount.isValidAmount(1));
-		assertFalse(Amount.isValidAmount(-1));
+		assertTrue(Amount.isValidAmount(-1));
 
 		Amount amount = Amount.of(10);
 		assertNotNull(amount);

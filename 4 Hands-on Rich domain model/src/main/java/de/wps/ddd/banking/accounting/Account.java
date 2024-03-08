@@ -1,18 +1,23 @@
 package de.wps.ddd.banking.accounting;
 
+import static de.wps.common.contracts.BaseContracts.require;
+import static de.wps.common.contracts.BaseContracts.requireNotNull;
+
 import de.wps.ddd.banking.sharedKernel.AccountNumber;
 import de.wps.ddd.banking.sharedKernel.Amount;
 
 public class Account {
+	private final AccountNumber accountNumber;
+	private final Customer accountOwner;
 	private Amount balance;
-	private AccountNumber accountNumber;
-	private Customer accountOwner;
 
-	public Account(Customer accountOwner) {
-		super();
-		this.balance = Amount.of(0);
-		this.accountNumber = AccountNumber.getValidAccountNumber();
+	public Account(AccountNumber accountNumber, Customer accountOwner) {
+		requireNotNull(accountNumber, "accountNumber");
+		requireNotNull(accountNumber, "accountOwner");
+
+		this.accountNumber = accountNumber;
 		this.accountOwner = accountOwner;
+		this.balance = Amount.of(0);
 	}
 
 	public Amount getBalance() {
@@ -20,13 +25,15 @@ public class Account {
 	}
 
 	public void withdraw(Amount amount) {
-		assert amount != null;
-		assert amount.isLessOrEquals(this.getBalance());
+		requireNotNull(amount, "amount");
+		require(amount.isLessOrEquals(getBalance()), "amount.isLessOrEquals(getBalance())");
+
 		this.balance = this.balance.subtract(amount);
 	}
 
 	public void deposit(Amount amount) {
-		assert amount != null;
+		requireNotNull(amount, "amount");
+
 		this.balance = this.balance.add(amount);
 	}
 
@@ -34,7 +41,7 @@ public class Account {
 		return accountNumber;
 	}
 
-	public Customer getAccountowner() {
+	public Customer getAccountOwner() {
 		return accountOwner;
 	}
 

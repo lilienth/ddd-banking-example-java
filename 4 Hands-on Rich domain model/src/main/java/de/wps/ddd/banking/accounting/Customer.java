@@ -1,27 +1,35 @@
 package de.wps.ddd.banking.accounting;
 
+import static de.wps.common.contracts.BaseContracts.ensureNotNull;
+import static de.wps.common.contracts.BaseContracts.require;
+import static de.wps.common.contracts.BaseContracts.requireNotNull;
+import static de.wps.common.contracts.StringContracts.requireHasText;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import de.wps.ddd.banking.sharedKernel.AccountNumber;
 import de.wps.ddd.banking.sharedKernel.CustomerNumber;
 
 public class Customer {
-	private String firstName;
-	private String familyName;
-	private LocalDate dateOfBirth;
-	private CustomerNumber customerNumber;
-	private List<Account> accountList;
+	private final String firstName;
+	private final String familyName;
+	private final LocalDate dateOfBirth;
+	private final CustomerNumber customerNumber;
+	private final List<Account> accountList;
 
-	public Customer(String firstName, String familyName, LocalDate dateOfBirth) {
-		super();
+	public Customer(CustomerNumber customerNumber, String firstName, String familyName, LocalDate dateOfBirth) {
+		requireNotNull(customerNumber, "customerNumber");
+		requireHasText(firstName, "firstName");
+		requireHasText(familyName, "familyName");
+		requireNotNull(dateOfBirth, "dateOfBirth");
+
 		this.firstName = firstName;
 		this.familyName = familyName;
 		this.dateOfBirth = dateOfBirth;
-		this.customerNumber = CustomerNumber.getValidCustomerNumber();
-		accountList = new ArrayList<Account>();
+		this.customerNumber = customerNumber;
+		accountList = new ArrayList<>();
 	}
 
 	public String getFirstName() {
@@ -41,17 +49,14 @@ public class Customer {
 	}
 
 	public Account getAccount(AccountNumber accountNumber) {
-		assert accountNumber != null;
-		assert hasAccount(accountNumber);
-		Account account = null;
-		Iterator<Account> iterator = accountList.iterator();
-		boolean found = false;
-		while (iterator.hasNext() && !found) {
-			account = iterator.next();
-			if (account.getAccountnumber() == accountNumber) {
-				found = true;
-			}
-		}
+		requireNotNull(accountNumber, "accountNumber");
+		require(hasAccount(accountNumber), "hasAccount(accountNumber)");
+
+		Account account = accountList.stream()
+				.filter(a -> a.getAccountnumber().equals(accountNumber))
+				.findAny().orElse(null);
+
+		ensureNotNull(account, "account");
 		return account;
 	}
 
@@ -60,16 +65,7 @@ public class Customer {
 	}
 
 	public boolean hasAccount(AccountNumber accountNumber) {
-		assert accountNumber != null;
-		boolean returnValue = false;
-		Iterator<Account> iterator = accountList.iterator();
-		while (iterator.hasNext() && returnValue == false) {
-			Account account = iterator.next();
-			if (account.getAccountnumber() == accountNumber) {
-				returnValue = true;
-			}
-		}
-		return returnValue;
+		requireNotNull(accountNumber, "accountNumber");
+		return accountList.stream().anyMatch(a -> a.getAccountnumber().equals(accountNumber));
 	}
-
 }
