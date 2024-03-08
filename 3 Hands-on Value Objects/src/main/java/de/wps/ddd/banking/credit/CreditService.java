@@ -22,21 +22,19 @@ public class CreditService {
 	private final Map<CreditNumber, Credit> creditList = new HashMap<>();
 	private final AccountNumberFactory accountNumberFactory;
 	private final CreditNumberFactory creditNumberFactory;
-	private final CustomerNumberFactory customerNumberFactory;
 
 	public CreditService() {
-		this(new AccountNumberFactory(), new CreditNumberFactory(), new CustomerNumberFactory());
+		this(new AccountNumberFactory(), new CreditNumberFactory());
 	}
-	CreditService(AccountNumberFactory accountNumberFactory, CreditNumberFactory creditNumberFactory, CustomerNumberFactory customerNumberFactory) {
+	CreditService(AccountNumberFactory accountNumberFactory, CreditNumberFactory creditNumberFactory) {
 		this.accountNumberFactory = accountNumberFactory;
 		this.creditNumberFactory = creditNumberFactory;
-        this.customerNumberFactory = customerNumberFactory;
     }
 
 
 	// should only be called by AccountManagementService
 	public void newCustomer(String firstName, String familyName, LocalDate dateOfBirth, CustomerNumber customerNumber) {
-		customerList.put(customerNumber, new CreditCustomer(customerNumberFactory.newCustomerNumber(), firstName, familyName, dateOfBirth));
+		customerList.put(customerNumber, new CreditCustomer(customerNumber, firstName, familyName, dateOfBirth));
 
 	}
 
