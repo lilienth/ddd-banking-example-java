@@ -8,7 +8,6 @@ import java.util.Map;
 import java.util.Set;
 
 import de.wps.ddd.banking.credit.Credit.Status;
-import org.checkerframework.checker.units.qual.C;
 
 public class CreditService {
 	private Map<CustomerNumber, CreditCustomer> customerList = new HashMap<>();
