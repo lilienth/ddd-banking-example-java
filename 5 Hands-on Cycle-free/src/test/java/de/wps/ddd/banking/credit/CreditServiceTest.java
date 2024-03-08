@@ -1,6 +1,7 @@
 package de.wps.ddd.banking.credit;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
@@ -20,19 +21,19 @@ class CreditServiceTest {
 		assertEquals(5, cs.getCreditCustomerList().size());
 		assertEquals(0, cs.getCreditAccountList().size());
 
-		CreditNumber creditNumber = cs.applyForCredit(Amount.of(1000), cs.getCreditCustomerList().get(0));
+		CreditNumber creditNumber = cs.applyForCredit(Amount.of(1000), cs.getCreditCustomerList().getFirst());
 		Credit credit = cs.getCredit(creditNumber);
 		assertEquals(Amount.of(1000), credit.getAmountOfCredit());
-		assertTrue(credit.getStatus() == Status.applied);
+        assertSame(credit.getStatus(), Status.applied);
 		assertEquals(5, cs.getCreditCustomerList().size());
 
 		CreditAccount creditAccount = cs.grantCredit(creditNumber);
-		assertTrue(credit.getStatus() == Status.granted);
-		assertTrue(credit.getAccount() == creditAccount);
+        assertSame(credit.getStatus(), Status.granted);
+        assertEquals(credit.getAccount().orElseThrow(), creditAccount);
 		assertTrue(cs.getCreditAccountList().contains(creditAccount));
 		assertEquals(1, cs.getCreditAccountList().size());
 
-		Credit credit2 = cs.getCreditFromAccountNumber(creditAccount.getAccountnumber());
+		Credit credit2 = cs.getCreditFromAccountNumber(creditAccount.getAccountNumber());
 		assertEquals(credit, credit2);
 	}
 
@@ -44,17 +45,17 @@ class CreditServiceTest {
 		assertEquals(5, cs.getCreditCustomerList().size());
 		assertEquals(0, cs.getCreditAccountList().size());
 
-		CreditCustomer customer = cs.getCreditCustomerList().get(0);
+		CreditCustomer customer = cs.getCreditCustomerList().getFirst();
 		CreditNumber creditNumber = cs.applyForCredit(Amount.of(1000), customer);
 		Credit credit = cs.getCredit(creditNumber);
 		CreditAccount newCreditAccount = cs.newCreditAccount(credit);
 		assertTrue(cs.getCreditAccountList().contains(newCreditAccount));
-		assertEquals(newCreditAccount, cs.getCreditAccount(newCreditAccount.getAccountnumber()));
+		assertEquals(newCreditAccount, cs.getCreditAccount(newCreditAccount.getAccountNumber()));
 		assertEquals(1, cs.getCreditAccountList().size());
 
-		assertTrue(cs.getAccountNumberList().contains(newCreditAccount.getAccountnumber()));
-		assertTrue(cs.getAccountNumberList().contains(newCreditAccount.getAccountnumber()));
-		assertTrue(customer.hasAccount(newCreditAccount.getAccountnumber()));
+		assertTrue(cs.getAccountNumberList().contains(newCreditAccount.getAccountNumber()));
+		assertTrue(cs.getAccountNumberList().contains(newCreditAccount.getAccountNumber()));
+		assertTrue(customer.hasAccount(newCreditAccount.getAccountNumber()));
 
 	}
 
@@ -66,13 +67,13 @@ class CreditServiceTest {
 		assertEquals(5, cs.getCreditCustomerList().size());
 		assertEquals(0, cs.getCreditAccountList().size());
 
-		CreditNumber creditNumber = cs.applyForCredit(Amount.of(1000), cs.getCreditCustomerList().get(0));
+		CreditNumber creditNumber = cs.applyForCredit(Amount.of(1000), cs.getCreditCustomerList().getFirst());
 		Credit credit = cs.getCredit(creditNumber);
 		assertEquals(5, cs.getCreditCustomerList().size());
 
 		CreditAccount creditAccount = cs.grantCredit(creditNumber);
-		assertTrue(credit.getStatus() == Status.granted);
-		assertTrue(credit.getAccount() == creditAccount);
+        assertSame(credit.getStatus(), Status.granted);
+        assertEquals(credit.getAccount().orElseThrow(), creditAccount);
 		assertEquals(1, cs.getCreditAccountList().size());
 		assertEquals(Amount.of(-1000), creditAccount.getBalance());
 

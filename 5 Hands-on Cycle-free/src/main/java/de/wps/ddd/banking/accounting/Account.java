@@ -1,16 +1,20 @@
 package de.wps.ddd.banking.accounting;
 
+import static de.wps.common.contracts.BaseContracts.require;
+import static de.wps.common.contracts.BaseContracts.requireNotNull;
+
 import de.wps.ddd.banking.sharedKernel.AccountNumber;
 import de.wps.ddd.banking.sharedKernel.Amount;
 
 public class Account {
+	private final AccountNumber accountNumber;
 	private Amount balance;
-	private AccountNumber accountNumber;
 
-	public Account() {
-		super();
+	public Account(AccountNumber accountNumber) {
+		requireNotNull(accountNumber, "accountNumber");
+
+		this.accountNumber = accountNumber;
 		this.balance = Amount.of(0);
-		this.accountNumber = AccountNumber.getValidAccountNumber();
 	}
 
 	public Amount getBalance() {
@@ -18,10 +22,15 @@ public class Account {
 	}
 
 	public void withdraw(Amount amount) {
+		requireNotNull(amount, "amount");
+		require(amount.isLessOrEquals(getBalance()), "amount.isLessOrEquals(getBalance())");
+
 		this.balance = this.balance.subtract(amount);
 	}
 
 	public void deposit(Amount amount) {
+		requireNotNull(amount, "amount");
+
 		this.balance = this.balance.add(amount);
 	}
 

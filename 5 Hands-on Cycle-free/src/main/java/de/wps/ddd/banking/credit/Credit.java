@@ -1,11 +1,15 @@
 package de.wps.ddd.banking.credit;
 
+import static de.wps.common.contracts.BaseContracts.require;
+import static de.wps.common.contracts.BaseContracts.requireNotNull;
+
 import de.wps.ddd.banking.sharedKernel.Amount;
 import de.wps.ddd.banking.sharedKernel.CreditNumber;
+import java.util.Optional;
 
 public class Credit {
-	private Amount amountOfCredit;
-	private CreditNumber creditNumber;
+	private final Amount amountOfCredit;
+	private final CreditNumber creditNumber;
 	private Status status;
 	private CreditAccount account;
 
@@ -13,10 +17,12 @@ public class Credit {
 		applied, refused, granted, delayed, payed
 	};
 
-	public Credit(Amount amountOfCredit) {
-		super();
+	public Credit(CreditNumber creditNumber, Amount amountOfCredit) {
+		requireNotNull(creditNumber, "creditNumber");
+		requireNotNull(amountOfCredit, "amountOfCredit");
+
 		this.amountOfCredit = amountOfCredit;
-		this.creditNumber = CreditNumber.getValidCreditNumber();
+		this.creditNumber = creditNumber;
 		this.status = Status.applied;
 	}
 
@@ -33,12 +39,19 @@ public class Credit {
 	}
 
 	public void grant(CreditAccount account) {
+		requireNotNull(account, "account");
+		require(canBeGranted(), "canBeGranted()");
+
 		this.status = Status.granted;
 		this.account = account;
 	}
 
-	public CreditAccount getAccount() {
-		return account;
+	public boolean canBeGranted() {
+		return (this.status != Status.refused && this.status != Status.granted);
+	}
+
+	public Optional<CreditAccount> getAccount() {
+		return Optional.ofNullable(account);
 	}
 
 }

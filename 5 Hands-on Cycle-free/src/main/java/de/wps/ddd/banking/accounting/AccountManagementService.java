@@ -1,10 +1,12 @@
 package de.wps.ddd.banking.accounting;
 
+import de.wps.ddd.banking.sharedKernel.AccountNumberFactory;
+import de.wps.ddd.banking.sharedKernel.CustomerNumberFactory;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 
 import de.wps.ddd.banking.credit.CreditService;
@@ -13,17 +15,24 @@ import de.wps.ddd.banking.sharedKernel.Amount;
 import de.wps.ddd.banking.sharedKernel.CustomerNumber;
 
 public class AccountManagementService {
-	private Map<CustomerNumber, Customer> customerList = new HashMap<CustomerNumber, Customer>();
-	private Map<AccountNumber, Account> accountList = new HashMap<AccountNumber, Account>();
-	private CreditService creditService = null;
+	private final Map<CustomerNumber, Customer> customerList = new HashMap<>();
+	private final Map<AccountNumber, Account> accountList = new HashMap<>();
+	private final CreditService creditService;
+	private final AccountNumberFactory accountNumberFactory;
+	private final CustomerNumberFactory customerNumberFactory;
 
 	public AccountManagementService(CreditService creditService) {
+		this(creditService, new AccountNumberFactory(), new CustomerNumberFactory());
+	}
 
+	AccountManagementService(CreditService creditService, AccountNumberFactory accountNumberFactory, CustomerNumberFactory customerNumberFactory) {
 		this.creditService = creditService;
+		this.accountNumberFactory = accountNumberFactory;
+		this.customerNumberFactory = customerNumberFactory;
 	}
 
 	public Customer newCustomer(String firstName, String familyName, LocalDate dateOfBirth) {
-		Customer customer = new Customer(firstName, familyName, dateOfBirth);
+		Customer customer = new Customer(customerNumberFactory.newCustomerNumber(), firstName, familyName, dateOfBirth);
 		customerList.put(customer.getCustomerNumber(), customer);
 		creditService.newCustomer(customer.getFirstName(), customer.getFamilyName(), customer.getDateOfBirth(),
 				customer.getCustomerNumber());
@@ -31,7 +40,7 @@ public class AccountManagementService {
 	}
 
 	public Account newAccount(Amount balance, Customer customer) {
-		Account account = new Account();
+		Account account = new Account(accountNumberFactory.newAccountNumber());
 		account.deposit(balance);
 		accountList.put(account.getAccountnumber(), account);
 		customer.addAccount(account);
@@ -39,22 +48,20 @@ public class AccountManagementService {
 	}
 
 	public List<Account> getAccountList() {
-		return new ArrayList<Account>(accountList.values());
+		return List.copyOf(accountList.values());
 	}
 
 	public List<Customer> getCustomerList() {
-		return new ArrayList<Customer>(customerList.values());
+		return List.copyOf(customerList.values());
 	}
 
 	public void transferMoney(Amount amount, AccountNumber debitorAccountNumber, AccountNumber creditorAccountNumber) {
 		accountList.get(debitorAccountNumber).withdraw(amount);
 		accountList.get(creditorAccountNumber).deposit(amount);
-
 	}
 
 	public Set<AccountNumber> getAccountNumberList() {
-
-		return accountList.keySet();
+		return Set.copyOf(accountList.keySet());
 	}
 
 	public Account getAccount(AccountNumber accountNumber) {
@@ -62,13 +69,10 @@ public class AccountManagementService {
 	}
 
 	public Customer getCustomer(AccountNumber accountNumber) {
-		Customer customer = null;
-		for (Map.Entry<CustomerNumber, Customer> entry : customerList.entrySet()) {
-			if (entry.getValue().hasAccount(accountNumber)) {
-				customer = entry.getValue();
-			}
-		}
-		return customer;
+		Optional<Customer> customer = customerList.values().stream()
+				.filter(c -> c.hasAccount(accountNumber))
+				.findAny();
+		return customer.orElse(null);
 	}
 
 }
