@@ -17,7 +17,7 @@ public class AccountManagementService {
     private final Map<AccountNumber, Account> accountList = new HashMap<>();
     private final CreditService creditService;
     private final AccountNumberFactory accountNumberFactory;
-        private final CustomerNumberFactory customerNumberFactory;
+    private final CustomerNumberFactory customerNumberFactory;
 
     public AccountManagementService(CreditService creditService) {
         this(creditService, new AccountNumberFactory(), new CustomerNumberFactory());
@@ -56,12 +56,10 @@ public class AccountManagementService {
     public void transferMoney(Amount amount, AccountNumber debitorAccountNumber, AccountNumber creditorAccountNumber) {
         accountList.get(debitorAccountNumber).withdraw(amount);
         accountList.get(creditorAccountNumber).deposit(amount);
-
     }
 
     public Set<AccountNumber> getAccountNumberList() {
-
-        return accountList.keySet();
+        return Set.copyOf(accountList.keySet());
     }
 
     public Account getAccount(AccountNumber accountNumber) {

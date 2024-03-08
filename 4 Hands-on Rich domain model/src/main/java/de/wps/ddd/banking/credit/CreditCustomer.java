@@ -73,7 +73,7 @@ public class CreditCustomer {
 	}
 
 	public List<Credit> getCreditList() {
-		return creditList;
+		return List.copyOf(creditList);
 	}
 
 }

@@ -1,5 +1,8 @@
 package de.wps.ddd.banking.credit;
 
+import static de.wps.common.contracts.BaseContracts.require;
+import static de.wps.common.contracts.BaseContracts.requireNotNull;
+
 import de.wps.ddd.banking.sharedKernel.AccountNumberFactory;
 import de.wps.ddd.banking.sharedKernel.CreditNumberFactory;
 import de.wps.ddd.banking.sharedKernel.CustomerNumberFactory;
@@ -21,22 +24,19 @@ public class CreditService {
 	private Map<CreditNumber, Credit> creditList = new HashMap<>();
 	private final CreditNumberFactory creditNumberFactory;
 	private final AccountNumberFactory accountNumberFactory;
-	private final CustomerNumberFactory customerNumberFactory;
 
 	public CreditService() {
-		this(new CreditNumberFactory(), new AccountNumberFactory(), new CustomerNumberFactory());
+		this(new CreditNumberFactory(), new AccountNumberFactory());
 	}
 
-	CreditService(CreditNumberFactory creditNumberFactory, AccountNumberFactory accountNumberFactory, CustomerNumberFactory customerNumberFactory) {
+	CreditService(CreditNumberFactory creditNumberFactory, AccountNumberFactory accountNumberFactory) {
         this.creditNumberFactory = creditNumberFactory;
         this.accountNumberFactory = accountNumberFactory;
-        this.customerNumberFactory = customerNumberFactory;
     }
 
 	// should only be called by AccountManagementService
 	public void newCustomer(String firstName, String familyName, LocalDate dateOfBirth, CustomerNumber customerNumber) {
-		customerList.put(customerNumber, new CreditCustomer(customerNumberFactory.newCustomerNumber(), firstName, familyName, dateOfBirth));
-
+		customerList.put(customerNumber, new CreditCustomer(customerNumber, firstName, familyName, dateOfBirth));
 	}
 
 	public CreditAccount newCreditAccount(Amount balance, Credit credit) {
@@ -59,10 +59,10 @@ public class CreditService {
 	}
 
 	public CreditAccount grantCredit(CreditNumber creditNumber) {
-		assert this.getCredit(creditNumber).canBeGranted();
+		require(getCredit(creditNumber).canBeGranted(), "getCredit(creditNumber).canBeGranted()");
 
-		Credit credit = this.getCredit(creditNumber);
-		CreditAccount newCreditAccount = this.newCreditAccount(credit);
+		Credit credit = getCredit(creditNumber);
+		CreditAccount newCreditAccount = newCreditAccount(credit);
 		credit.grant(newCreditAccount);
 		return newCreditAccount;
 	}
@@ -72,7 +72,7 @@ public class CreditService {
 	}
 
 	public Credit getCreditFromAccountNumber(AccountNumber accountNumber) {
-		assert accountNumber != null;
+		requireNotNull(accountNumber, "accountNumber");
 
 		Credit credit = null;
 		for (Map.Entry<CreditNumber, Credit> entry : creditList.entrySet()) {
@@ -88,7 +88,6 @@ public class CreditService {
 		Credit credit = creditList.get(creditNumber);
 		CreditAccount creditAccount = credit.getAccount().orElseThrow();
 		creditAccount.deposit(amount);
-
 	}
 
 	public CreditCustomer getCustomerForCredit(Credit credit) {
@@ -122,8 +121,6 @@ public class CreditService {
 	}
 
 	public Set<AccountNumber> getAccountNumberList() {
-
-		return accountList.keySet();
+		return Set.copyOf(accountList.keySet());
 	}
-
 }

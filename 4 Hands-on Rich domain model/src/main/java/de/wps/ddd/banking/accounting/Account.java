@@ -13,7 +13,7 @@ public class Account {
 
 	public Account(AccountNumber accountNumber, Customer accountOwner) {
 		requireNotNull(accountNumber, "accountNumber");
-		requireNotNull(accountNumber, "accountOwner");
+		requireNotNull(accountOwner, "accountOwner");
 
 		this.accountNumber = accountNumber;
 		this.accountOwner = accountOwner;
