@@ -2,8 +2,8 @@ package de.wps.ddd.banking;
 
 import static com.tngtech.archunit.core.domain.JavaClass.Predicates.RECORDS;
 import static com.tngtech.archunit.core.domain.JavaClass.Predicates.containAnyMethodsThat;
-
 import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.classes;
+import static com.tngtech.archunit.library.Architectures.layeredArchitecture;
 
 import com.tngtech.archunit.base.DescribedPredicate;
 import com.tngtech.archunit.core.domain.JavaClass;
@@ -18,24 +18,41 @@ import com.tngtech.archunit.lang.ConditionEvents;
 import com.tngtech.archunit.lang.SimpleConditionEvent;
 import java.lang.reflect.Modifier;
 
-@AnalyzeClasses(packagesOf = ValueObjectArchTest.class, importOptions = {ImportOption.DoNotIncludeTests.class })
+@AnalyzeClasses(packagesOf = ValueObjectArchTest.class, importOptions = { ImportOption.DoNotIncludeTests.class })
 class ValueObjectArchTest {
 
     /**
      * This rule checks, that constructors of records with factory methods are not called from any other class.
      */
     @ArchTest
-    final ArchRule second = classes()
-            .that(areRecordWithFactoryMethod())
+    final ArchRule factoryMethodsForValueObjectsMustBeUsed = classes()
+            .that(areRecordsWithFactoryMethod())
             .should(callConstructorOnlyFromTheSameClass())
             .as("Factory methods of record based value objects must be used");
 
-    private static DescribedPredicate<JavaClass> areRecordWithFactoryMethod() {
+    @ArchTest
+    final ArchRule boundedContexts = layeredArchitecture()
+            .consideringOnlyDependenciesInAnyPackage(ValueObjectArchTest.class.getPackageName() + "..")
+            .as("Bounded contexts")
+            .layer("accounting").definedBy("..accounting..")
+            .layer("credit").definedBy("..credit..")
+            .layer("sharedKernel").definedBy("..sharedKernel..")
+            .whereLayer("accounting").mayNotBeAccessedByAnyLayer()
+            .whereLayer("credit").mayOnlyBeAccessedByLayers("accounting")
+            .whereLayer("sharedKernel").mayOnlyBeAccessedByLayers("accounting", "credit")
+            .ensureAllClassesAreContainedInArchitecture();
+
+    /**
+     * @return predicate matching Records with a factory method.
+     * @see #staticFactoryMethod()
+     */
+    private static DescribedPredicate<JavaClass> areRecordsWithFactoryMethod() {
         return RECORDS.and(containAnyMethodsThat(staticFactoryMethod()));
     }
 
     /**
      * Static factory method means a static method returning the class in which it is declared
+     *
      * @return predicate testing for staticFactoryMethods
      */
     private static DescribedPredicate<JavaMethod> staticFactoryMethod() {
