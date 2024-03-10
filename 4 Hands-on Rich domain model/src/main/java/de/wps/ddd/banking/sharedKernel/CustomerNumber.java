@@ -2,6 +2,8 @@ package de.wps.ddd.banking.sharedKernel;
 
 import static de.wps.common.contracts.BaseContracts.require;
 
+import org.jmolecules.ddd.annotation.ValueObject;
+
 /**
  * ValueObject, representing a syntactically valid customer number
  *
@@ -18,6 +20,7 @@ import static de.wps.common.contracts.BaseContracts.require;
  * @see CreditNumber
  * @see AccountNumber
  */
+@ValueObject
 public record CustomerNumber(int customerNumberValue) {
     public CustomerNumber {
         require(isValid(customerNumberValue), "isValid(customerNumberValue)");

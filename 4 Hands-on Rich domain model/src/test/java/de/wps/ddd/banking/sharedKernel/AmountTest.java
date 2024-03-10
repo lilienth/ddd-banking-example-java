@@ -1,11 +1,10 @@
-package de.wps.ddd.banking.valueObjects;
+package de.wps.ddd.banking.sharedKernel;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import de.wps.ddd.banking.sharedKernel.Amount;
 import org.junit.jupiter.api.Test;
 
 class AmountTest {

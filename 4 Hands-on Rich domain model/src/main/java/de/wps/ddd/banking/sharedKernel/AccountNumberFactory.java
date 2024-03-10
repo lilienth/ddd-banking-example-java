@@ -3,10 +3,12 @@ package de.wps.ddd.banking.sharedKernel;
 import static de.wps.common.contracts.BaseContracts.requireNotNull;
 
 import java.util.concurrent.atomic.AtomicInteger;
+import org.jmolecules.ddd.annotation.Factory;
 
 /**
  * Factory to create {@link AccountNumber}s.
  */
+@Factory
 public class AccountNumberFactory {
 
     /**

@@ -3,6 +3,7 @@ package de.wps.ddd.banking.sharedKernel;
 import static de.wps.common.contracts.BaseContracts.require;
 
 import java.util.Objects;
+import org.jmolecules.ddd.annotation.ValueObject;
 
 /**
  * ValueObject, representing a syntactically valid account number
@@ -17,6 +18,7 @@ import java.util.Objects;
  * @see CustomerNumber for an alternative way of implementing value objects
  * @see CreditNumber for an alternative way of implementing value objects
  */
+@ValueObject
 public class AccountNumber {
 
 	public static boolean isValid(int accountNumberValue) {

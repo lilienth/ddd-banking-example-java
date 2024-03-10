@@ -1,6 +1,7 @@
 package de.wps.ddd.banking.sharedKernel;
 
 import java.util.Objects;
+import org.jmolecules.ddd.annotation.ValueObject;
 
 /**
  * ValueObject, representing a syntactically valid amount
@@ -15,6 +16,7 @@ import java.util.Objects;
  * @see CustomerNumber for an alternative way of implementing value objects
  * @see CreditNumber for an alternative way of implementing value objects
  */
+@ValueObject
 public class Amount {
 
 	public static boolean isValidAmount(float amount) {

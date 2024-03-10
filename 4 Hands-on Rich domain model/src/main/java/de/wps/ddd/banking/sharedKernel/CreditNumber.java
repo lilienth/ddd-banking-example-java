@@ -2,6 +2,8 @@ package de.wps.ddd.banking.sharedKernel;
 
 import static de.wps.common.contracts.BaseContracts.require;
 
+import org.jmolecules.ddd.annotation.ValueObject;
+
 /**
  * ValueObject representing a syntactically valid credit numbers
  *
@@ -15,6 +17,7 @@ import static de.wps.common.contracts.BaseContracts.require;
  * @see CustomerNumber for an alternative way of implementing value objects
  * @see AccountNumber for an alternative way of implementing value objects
  */
+@ValueObject
 public record CreditNumber(int creditNumberValue) {
 
 	public static boolean isValid(int creditNumberValue) {

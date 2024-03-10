@@ -5,44 +5,46 @@ import static de.wps.common.contracts.BaseContracts.requireNotNull;
 
 import de.wps.ddd.banking.sharedKernel.AccountNumber;
 import de.wps.ddd.banking.sharedKernel.Amount;
+import org.jmolecules.ddd.annotation.Entity;
 
+@Entity
 public class Account {
-	private final AccountNumber accountNumber;
-	private final Customer accountOwner;
-	private Amount balance;
+    private final AccountNumber accountNumber;
+    private final Customer accountOwner;
+    private Amount balance;
 
-	public Account(AccountNumber accountNumber, Customer accountOwner) {
-		requireNotNull(accountNumber, "accountNumber");
-		requireNotNull(accountOwner, "accountOwner");
+    public Account(AccountNumber accountNumber, Customer accountOwner) {
+        requireNotNull(accountNumber, "accountNumber");
+        requireNotNull(accountOwner, "accountOwner");
 
-		this.accountNumber = accountNumber;
-		this.accountOwner = accountOwner;
-		this.balance = Amount.of(0);
-	}
+        this.accountNumber = accountNumber;
+        this.accountOwner = accountOwner;
+        this.balance = Amount.of(0);
+    }
 
-	public Amount getBalance() {
-		return balance;
-	}
+    public Amount getBalance() {
+        return balance;
+    }
 
-	public void withdraw(Amount amount) {
-		requireNotNull(amount, "amount");
-		require(amount.isLessOrEquals(getBalance()), "amount.isLessOrEquals(getBalance())");
+    public void withdraw(Amount amount) {
+        requireNotNull(amount, "amount");
+        require(amount.isLessOrEquals(getBalance()), "amount.isLessOrEquals(getBalance())");
 
-		this.balance = this.balance.subtract(amount);
-	}
+        this.balance = this.balance.subtract(amount);
+    }
 
-	public void deposit(Amount amount) {
-		requireNotNull(amount, "amount");
+    public void deposit(Amount amount) {
+        requireNotNull(amount, "amount");
 
-		this.balance = this.balance.add(amount);
-	}
+        this.balance = this.balance.add(amount);
+    }
 
-	public AccountNumber getAccountnumber() {
-		return accountNumber;
-	}
+    public AccountNumber getAccountnumber() {
+        return accountNumber;
+    }
 
-	public Customer getAccountOwner() {
-		return accountOwner;
-	}
+    public Customer getAccountOwner() {
+        return accountOwner;
+    }
 
 }

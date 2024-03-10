@@ -11,7 +11,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import org.jmolecules.ddd.annotation.Service;
 
+@Service
 public class AccountManagementService {
     private final Map<CustomerNumber, Customer> customerList = new HashMap<>();
     private final Map<AccountNumber, Account> accountList = new HashMap<>();
