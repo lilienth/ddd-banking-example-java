@@ -7,7 +7,6 @@ import de.wps.ddd.banking.sharedKernel.AccountNumberFactory;
 import de.wps.ddd.banking.sharedKernel.CreditNumberFactory;
 import de.wps.ddd.banking.sharedKernel.CustomerNumberFactory;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

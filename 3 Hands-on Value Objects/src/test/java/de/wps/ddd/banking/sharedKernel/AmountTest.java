@@ -7,8 +7,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-import de.wps.ddd.banking.sharedKernel.Amount;
-
 class AmountTest {
 
 	@Test
@@ -36,7 +34,7 @@ class AmountTest {
 	}
 
 	@Test
-	void testSubstract() {
+	void testSubtract() {
 		Amount amount1 = Amount.of(10);
 		Amount amount2 = Amount.of(5);
 

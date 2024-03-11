@@ -2,7 +2,6 @@ package de.wps.ddd.banking.credit;
 
 import de.wps.ddd.banking.sharedKernel.AccountNumberFactory;
 import de.wps.ddd.banking.sharedKernel.CreditNumberFactory;
-import de.wps.ddd.banking.sharedKernel.CustomerNumberFactory;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;

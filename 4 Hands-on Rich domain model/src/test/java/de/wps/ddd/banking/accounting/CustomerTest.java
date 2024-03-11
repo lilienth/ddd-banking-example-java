@@ -1,7 +1,6 @@
 package de.wps.ddd.banking.accounting;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import de.wps.ddd.banking.sharedKernel.CustomerNumber;
 import java.time.LocalDate;

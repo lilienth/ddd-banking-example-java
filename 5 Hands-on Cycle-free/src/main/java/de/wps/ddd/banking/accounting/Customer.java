@@ -7,7 +7,6 @@ import static de.wps.common.contracts.StringContracts.requireHasText;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import de.wps.ddd.banking.sharedKernel.AccountNumber;
