@@ -1,0 +1,6 @@
+artifact ValueObjectsPattern
+{
+    exclude "External**"
+    
+    
+}
