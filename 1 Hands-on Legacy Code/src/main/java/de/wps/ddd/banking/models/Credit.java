@@ -9,7 +9,7 @@ public class Credit {
 
 	public enum Status {
 		applied, refused, granted, delayed, payed
-	};
+	}
 
 	public Credit(int creditNumber, Customer customer, float amountOfCredit) {
 		super();

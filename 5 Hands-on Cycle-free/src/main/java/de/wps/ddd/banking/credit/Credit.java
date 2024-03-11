@@ -15,7 +15,7 @@ public class Credit {
 
 	public enum Status {
 		applied, refused, granted, delayed, payed
-	};
+	}
 
 	public Credit(CreditNumber creditNumber, Amount amountOfCredit) {
 		requireNotNull(creditNumber, "creditNumber");

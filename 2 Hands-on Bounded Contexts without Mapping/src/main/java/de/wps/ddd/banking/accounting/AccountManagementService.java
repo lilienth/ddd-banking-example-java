@@ -59,7 +59,6 @@ public class AccountManagementService {
 	}
 
 	public Customer getCustomer(int accountNumber) {
-		Customer customer = accountList.get(accountNumber).getAccountowner();
-		return customer;
+        return accountList.get(accountNumber).getAccountowner();
 	}
 }
