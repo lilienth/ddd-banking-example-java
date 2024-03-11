@@ -5,9 +5,11 @@ import static de.wps.common.contracts.BaseContracts.requireNotNull;
 import de.wps.ddd.banking.sharedKernel.AccountNumber;
 import de.wps.ddd.banking.sharedKernel.Amount;
 import org.jmolecules.ddd.annotation.Entity;
+import org.jmolecules.ddd.annotation.Identity;
 
 @Entity
 public class CreditAccount {
+    @Identity
     private final AccountNumber accountNumber;
     private final CreditCustomer accountOwner;
     private final Credit credit;

@@ -7,11 +7,13 @@ import de.wps.ddd.banking.sharedKernel.Amount;
 import de.wps.ddd.banking.sharedKernel.CreditNumber;
 import java.util.Optional;
 import org.jmolecules.ddd.annotation.Entity;
+import org.jmolecules.ddd.annotation.Identity;
 
 @Entity
 public class Credit {
-    private final Amount amountOfCredit;
+    @Identity
     private final CreditNumber creditNumber;
+    private final Amount amountOfCredit;
     private final CreditCustomer customer;
     private CreditAccount account;
     private Status status;

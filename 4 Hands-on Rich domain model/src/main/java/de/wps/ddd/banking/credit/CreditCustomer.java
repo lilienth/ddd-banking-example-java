@@ -12,9 +12,11 @@ import java.util.List;
 import de.wps.ddd.banking.sharedKernel.AccountNumber;
 import de.wps.ddd.banking.sharedKernel.CustomerNumber;
 import org.jmolecules.ddd.annotation.AggregateRoot;
+import org.jmolecules.ddd.annotation.Identity;
 
 @AggregateRoot
 public class CreditCustomer {
+    @Identity
     private final CustomerNumber customerNumber;
     private final String firstName;
     private final String familyName;

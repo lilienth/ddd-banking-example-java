@@ -12,14 +12,15 @@ import java.util.List;
 import de.wps.ddd.banking.sharedKernel.AccountNumber;
 import de.wps.ddd.banking.sharedKernel.CustomerNumber;
 import org.jmolecules.ddd.annotation.AggregateRoot;
-import org.jmolecules.ddd.annotation.Entity;
+import org.jmolecules.ddd.annotation.Identity;
 
 @AggregateRoot
 public class Customer {
+	@Identity
+	private final CustomerNumber customerNumber;
 	private final String firstName;
 	private final String familyName;
 	private final LocalDate dateOfBirth;
-	private final CustomerNumber customerNumber;
 	private final List<Account> accountList;
 
 	public Customer(CustomerNumber customerNumber, String firstName, String familyName, LocalDate dateOfBirth) {
