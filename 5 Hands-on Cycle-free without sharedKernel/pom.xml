@@ -11,7 +11,7 @@
     </parent>
 
     <artifactId>cycle-free-without-shared-kernel</artifactId>
-    <name>4 Hands-on Cycle-free without shared Kernel</name>
+    <name>5 Hands-on Cycle-free without shared kernel</name>
 
     <dependencies>
         <dependency>
