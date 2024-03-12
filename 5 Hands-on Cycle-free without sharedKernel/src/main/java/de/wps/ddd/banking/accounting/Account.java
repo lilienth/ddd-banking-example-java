@@ -3,7 +3,6 @@ package de.wps.ddd.banking.accounting;
 import static de.wps.common.contracts.BaseContracts.require;
 import static de.wps.common.contracts.BaseContracts.requireNotNull;
 
-
 public class Account {
     private final AccountNumber accountNumber;
     private Amount balance;
