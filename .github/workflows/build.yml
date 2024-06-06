@@ -28,7 +28,7 @@ jobs:
         working-directory: "./3 Hands-on Value Objects"
         run: ./mvnw --batch-mode --update-snapshots verify
       - name: Build 3b with Maven
-        working-directory: "./3 Hands-on Value Objects without shared Kernel"
+        working-directory: "./3 Hands-on Value Objects without sharedKernel"
         run: ./mvnw --batch-mode --update-snapshots verify
       - name: Build 4 with Maven
         working-directory: "./4 Hands-on Rich domain model"
