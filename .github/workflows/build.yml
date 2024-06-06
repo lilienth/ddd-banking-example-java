@@ -15,6 +15,30 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
           cache: maven
-      - name: Build with Maven
+      - name: Build 1 with Maven
         working-directory: "./1 Hands-on Legacy Code"
+        run: ./mvnw --batch-mode --update-snapshots verify
+      - name: Build 2a with Maven
+        working-directory: "./2 Hands-on Bounded Contexts"
+        run: ./mvnw --batch-mode --update-snapshots verify
+      - name: Build 2b with Maven
+        working-directory: "./2 Hands-on Bounded Contexts without Mapping"
+        run: ./mvnw --batch-mode --update-snapshots verify
+      - name: Build 3a with Maven
+        working-directory: "./3 Hands-on Value Objects"
+        run: ./mvnw --batch-mode --update-snapshots verify
+      - name: Build 3b with Maven
+        working-directory: "./3 Hands-on Value Objects without shared Kernel"
+        run: ./mvnw --batch-mode --update-snapshots verify
+      - name: Build 4 with Maven
+        working-directory: "./4 Hands-on Rich domain model"
+        run: ./mvnw --batch-mode --update-snapshots verify
+      - name: Build 5a with Maven
+        working-directory: "./5 Hands-on Cycle-free"
+        run: ./mvnw --batch-mode --update-snapshots verify
+      - name: Build 5b with Maven
+        working-directory: "./5 Hands-on Cycle-free without sharedKernel"
+        run: ./mvnw --batch-mode --update-snapshots verify
+      - name: Build 6 with Maven
+        working-directory: "./6 Hands-on Event Based"
         run: ./mvnw --batch-mode --update-snapshots verify
