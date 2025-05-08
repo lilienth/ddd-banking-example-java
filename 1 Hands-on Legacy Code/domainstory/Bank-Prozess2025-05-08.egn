@@ -1,0 +1,1186 @@
+{
+  "domain": {
+    "name": "default",
+    "actors": {
+      "Person": "<svg viewBox=\"0 0 24 26\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M12 5.9c1.16 0 2.1.94 2.1 2.1s-.94 2.1-2.1 2.1S9.9 9.16 9.9 8s.94-2.1 2.1-2.1m0 9c2.97 0 6.1 1.46 6.1 2.1v1.1H5.9V17c0-.64 3.13-2.1 6.1-2.1M12 4C9.79 4 8 5.79 8 8s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 9c-2.67 0-8 1.34-8 4v3h16v-3c0-2.66-5.33-4-8-4z\"/><path d=\"M0 0h24v24H0z\" fill=\"none\"/></svg>",
+      "Group": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"48\" viewBox=\"0 0 24 26\"><path d=\"M0 0h24v24H0z\" fill=\"none\"/><path d=\"M16.5 13c-1.2 0-3.07.34-4.5 1-1.43-.67-3.3-1-4.5-1C5.33 13 1 14.08 1 16.25V19h22v-2.75c0-2.17-4.33-3.25-6.5-3.25zm-4 4.5h-10v-1.25c0-.54 2.56-1.75 5-1.75s5 1.21 5 1.75v1.25zm9 0H14v-1.25c0-.46-.2-.86-.52-1.22.88-.3 1.96-.53 3.02-.53 2.44 0 5 1.21 5 1.75v1.25zM7.5 12c1.93 0 3.5-1.57 3.5-3.5S9.43 5 7.5 5 4 6.57 4 8.5 5.57 12 7.5 12zm0-5.5c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm9 5.5c1.93 0 3.5-1.57 3.5-3.5S18.43 5 16.5 5 13 6.57 13 8.5s1.57 3.5 3.5 3.5zm0-5.5c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2z\"/></svg>",
+      "System": "<svg viewBox=\"0 0 24 26\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M20,18c1.1,0,2-0.9,2-2V6c0-1.1-0.9-2-2-2H4C2.9,4,2,4.9,2,6v10c0,1.1,0.9,2,2,2H0v2h24v-2H20z M4,6h16v10H4V6z\"/></svg>"
+    },
+    "workObjects": {
+      "Document": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 26\"><path fill=\"none\" d=\"M0 0h24v24H0V0z\"/><path d=\"M8 16h8v2H8zm0-4h8v2H8zm6-10H6c-1.1 0-2 .9-2 2v16c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11z\"/></svg>",
+      "Folder": "<svg viewBox=\"0 0 24 26\" xmlns=\"http://www.w3.org/2000/svg\"><path fill=\"none\" d=\"M0,0h24v24H0V0z\"/><path d=\"M9.17,6l2,2H20v10L4,18V6H9.17 M10,4H4C2.9,4,2.01,4.9,2.01,6L2,18c0,1.1,0.9,2,2,2h16c1.1,0,2-0.9,2-2V8c0-1.1-0.9-2-2-2 h-8L10,4L10,4z\"/></svg>",
+      "Call": "<svg viewBox=\"0 0 24 26\" xmlns=\"http://www.w3.org/2000/svg\"><path fill=\"none\" d=\"M0,0h24v24H0V0z\"/><path d=\"M6.54,5C6.6,5.89,6.75,6.76,6.99,7.59l-1.2,1.2C5.38,7.59,5.12,6.32,5.03,5H6.54 M16.4,17.02c0.85,0.24,1.72,0.39,2.6,0.45 v1.49c-1.32-0.09-2.59-0.35-3.8-0.75L16.4,17.02 M7.5,3H4C3.45,3,3,3.45,3,4c0,9.39,7.61,17,17,17c0.55,0,1-0.45,1-1v-3.49\tc0-0.55-0.45-1-1-1c-1.24,0-2.45-0.2-3.57-0.57c-0.1-0.04-0.21-0.05-0.31-0.05c-0.26,0-0.51,0.1-0.71,0.29l-2.2,2.2 c-2.83-1.45-5.15-3.76-6.59-6.59l2.2-2.2C9.1,8.31,9.18,7.92,9.07,7.57C8.7,6.45,8.5,5.25,8.5,4C8.5,3.45,8.05,3,7.5,3L7.5,3z\"/></svg>",
+      "Email": "<svg viewBox=\"0 0 24 26\" xmlns=\"http://www.w3.org/2000/svg\"><path fill=\"none\" d=\"M0,0h24v24H0V0z\"/><path fill-opacity=\"0.9\" d=\"M12,1.95c-5.52,0-10,4.48-10,10s4.48,10,10,10h5v-2h-5c-4.34,0-8-3.66-8-8s3.66-8,8-8s8,3.66,8,8v1.43 c0,0.79-0.71,1.57-1.5,1.57S17,14.17,17,13.38v-1.43c0-2.76-2.24-5-5-5s-5,2.24-5,5s2.24,5,5,5c1.38,0,2.64-0.56,3.54-1.47 c0.65,0.89,1.77,1.47,2.96,1.47c1.97,0,3.5-1.6,3.5-3.57v-1.43C22,6.43,17.52,1.95,12,1.95z M12,14.95c-1.66,0-3-1.34-3-3 s1.34-3,3-3s3,1.34,3,3S13.66,14.95,12,14.95z\"/></svg>",
+      "Conversation": "<svg height=\"48\" viewBox=\"0 0 24 26\" width=\"24\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M0 0h24v24H0V0z\" fill=\"none\"/><path d=\"M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z\"/></svg>",
+      "Info": "<svg height=\"48\" viewBox=\"0 0 24 26\" width=\"24\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M0 0h24v24H0z\" fill=\"none\"/><path d=\"M11 17h2v-6h-2v6zm1-15C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM11 9h2V7h-2v2z\"/></svg>",
+      "Euro": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 26\"><path fill=\"none\" d=\"M0 0h24v24H0V0z\"/><path d=\"M15 18.5c-2.51 0-4.68-1.42-5.76-3.5H15v-2H8.58c-.05-.33-.08-.66-.08-1s.03-.67.08-1H15V9H9.24C10.32 6.92 12.5 5.5 15 5.5c1.61 0 3.09.59 4.23 1.57L21 5.3C19.41 3.87 17.3 3 15 3c-3.92 0-7.24 2.51-8.48 6H3v2h3.06c-.04.33-.06.66-.06 1s.02.67.06 1H3v2h3.52c1.24 3.49 4.56 6 8.48 6 2.31 0 4.41-.87 6-2.3l-1.78-1.77c-1.13.98-2.6 1.57-4.22 1.57z\"/></svg>",
+      "Wrench": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 28\"><path fill=\"none\" d=\"M0 0h24v24H0V0z\"/><path d=\"M22.61 18.99l-9.08-9.08c.93-2.34.45-5.1-1.44-7C9.79.61 6.21.4 3.66 2.26L7.5 6.11 6.08 7.52 2.25 3.69C.39 6.23.6 9.82 2.9 12.11c1.86 1.86 4.57 2.35 6.89 1.48l9.11 9.11c.39.39 1.02.39 1.41 0l2.3-2.3c.4-.38.4-1.01 0-1.41zm-3 1.6l-9.46-9.46c-.61.45-1.29.72-2 .82-1.36.2-2.79-.21-3.83-1.25C3.37 9.76 2.93 8.5 3 7.26l3.09 3.09 4.24-4.24-3.09-3.09c1.24-.07 2.49.37 3.44 1.31 1.08 1.08 1.49 2.57 1.24 3.96-.12.71-.42 1.37-.88 1.96l9.45 9.45-.88.89z\"/></svg>"
+    }
+  },
+  "dst": [
+    {
+      "type": "domainStory:activity",
+      "name": "und gibt zurück",
+      "id": "connection_0105",
+      "pickedColor": "black",
+      "number": null,
+      "waypoints": [
+        {
+          "original": {
+            "x": 748,
+            "y": 380
+          },
+          "x": 748,
+          "y": 380
+        },
+        {
+          "x": 805,
+          "y": 380
+        },
+        {
+          "original": {
+            "x": 895,
+            "y": 238
+          },
+          "x": 895,
+          "y": 238
+        }
+      ],
+      "source": "shape_8462",
+      "target": "shape_1708",
+      "multipleNumberAllowed": false
+    },
+    {
+      "type": "domainStory:activity",
+      "name": "aus und schickt ihn",
+      "id": "connection_0497",
+      "pickedColor": "black",
+      "number": null,
+      "waypoints": [
+        {
+          "original": {
+            "x": 667,
+            "y": 260
+          },
+          "x": 667,
+          "y": 260
+        },
+        {
+          "original": {
+            "x": 608,
+            "y": 260
+          },
+          "x": 608,
+          "y": 260
+        }
+      ],
+      "source": "shape_5010",
+      "target": "shape_3857",
+      "multipleNumberAllowed": false
+    },
+    {
+      "type": "domainStory:activity",
+      "name": "sendet",
+      "id": "connection_0575",
+      "pickedColor": "black",
+      "number": 9,
+      "waypoints": [
+        {
+          "original": {
+            "x": 417,
+            "y": 238
+          },
+          "x": 417,
+          "y": 238
+        },
+        {
+          "x": 314,
+          "y": 340
+        },
+        {
+          "original": {
+            "x": 306,
+            "y": 422
+          },
+          "x": 306,
+          "y": 422
+        }
+      ],
+      "source": "shape_5444",
+      "target": "shape_5623",
+      "multipleNumberAllowed": false
+    },
+    {
+      "type": "domainStory:activity",
+      "name": "",
+      "id": "connection_0688",
+      "pickedColor": "black",
+      "number": null,
+      "waypoints": [
+        {
+          "original": {
+            "x": 527,
+            "y": 237
+          },
+          "x": 527,
+          "y": 237
+        },
+        {
+          "original": {
+            "x": 492,
+            "y": 216
+          },
+          "x": 492,
+          "y": 216
+        }
+      ],
+      "source": "shape_3857",
+      "target": "shape_5444"
+    },
+    {
+      "type": "domainStory:activity",
+      "name": "eröffnet",
+      "id": "connection_1168",
+      "pickedColor": "black",
+      "number": 7,
+      "waypoints": [
+        {
+          "original": {
+            "x": 949,
+            "y": 191
+          },
+          "x": 949,
+          "y": 191
+        },
+        {
+          "original": {
+            "x": 1027,
+            "y": 191
+          },
+          "x": 1027,
+          "y": 191
+        }
+      ],
+      "source": "shape_1708",
+      "target": "shape_9796",
+      "multipleNumberAllowed": false
+    },
+    {
+      "type": "domainStory:activity",
+      "name": "vom",
+      "id": "connection_1199",
+      "pickedColor": "black",
+      "number": null,
+      "waypoints": [
+        {
+          "original": {
+            "x": 748,
+            "y": 750
+          },
+          "x": 748,
+          "y": 750
+        },
+        {
+          "original": {
+            "x": 868,
+            "y": 750
+          },
+          "x": 868,
+          "y": 750
+        }
+      ],
+      "source": "shape_9820",
+      "target": "shape_8748",
+      "multipleNumberAllowed": false
+    },
+    {
+      "type": "domainStory:activity",
+      "name": "weiter an",
+      "id": "connection_1519",
+      "pickedColor": "black",
+      "number": null,
+      "waypoints": [
+        {
+          "original": {
+            "x": 847,
+            "y": 464
+          },
+          "x": 847,
+          "y": 464
+        },
+        {
+          "original": {
+            "x": 738,
+            "y": 560
+          },
+          "x": 738,
+          "y": 560
+        }
+      ],
+      "source": "shape_9261",
+      "target": "shape_4121",
+      "multipleNumberAllowed": false
+    },
+    {
+      "type": "domainStory:activity",
+      "name": "lässt",
+      "id": "connection_2430",
+      "pickedColor": "black",
+      "number": 4,
+      "waypoints": [
+        {
+          "original": {
+            "x": 913,
+            "y": 155
+          },
+          "x": 913,
+          "y": 155
+        },
+        {
+          "x": 935,
+          "y": 40
+        },
+        {
+          "original": {
+            "x": 1027,
+            "y": 40
+          },
+          "x": 1027,
+          "y": 40
+        }
+      ],
+      "source": "shape_1708",
+      "target": "shape_4730",
+      "multipleNumberAllowed": false
+    },
+    {
+      "type": "domainStory:activity",
+      "name": "prüfen durch",
+      "id": "connection_2511",
+      "pickedColor": "black",
+      "number": null,
+      "waypoints": [
+        {
+          "original": {
+            "x": 1108,
+            "y": 40
+          },
+          "x": 1108,
+          "y": 40
+        },
+        {
+          "original": {
+            "x": 1167,
+            "y": 40
+          },
+          "x": 1167,
+          "y": 40
+        }
+      ],
+      "source": "shape_4730",
+      "target": "shape_9691",
+      "multipleNumberAllowed": false
+    },
+    {
+      "type": "domainStory:activity",
+      "name": "für",
+      "id": "connection_2819",
+      "pickedColor": "black",
+      "number": null,
+      "waypoints": [
+        {
+          "original": {
+            "x": 467,
+            "y": 660
+          },
+          "x": 467,
+          "y": 660
+        },
+        {
+          "original": {
+            "x": 348,
+            "y": 660
+          },
+          "x": 348,
+          "y": 660
+        }
+      ],
+      "source": "shape_9110",
+      "target": "shape_4768",
+      "multipleNumberAllowed": false
+    },
+    {
+      "type": "domainStory:activity",
+      "name": "füllt",
+      "id": "connection_2868",
+      "pickedColor": "black",
+      "number": 5,
+      "waypoints": [
+        {
+          "original": {
+            "x": 868,
+            "y": 223
+          },
+          "x": 868,
+          "y": 223
+        },
+        {
+          "x": 825,
+          "y": 260
+        },
+        {
+          "original": {
+            "x": 748,
+            "y": 260
+          },
+          "x": 748,
+          "y": 260
+        }
+      ],
+      "source": "shape_1708",
+      "target": "shape_5010",
+      "multipleNumberAllowed": false
+    },
+    {
+      "type": "domainStory:activity",
+      "name": "auf",
+      "id": "connection_3506",
+      "pickedColor": "black",
+      "number": null,
+      "waypoints": [
+        {
+          "original": {
+            "x": 949,
+            "y": 750
+          },
+          "x": 949,
+          "y": 750
+        },
+        {
+          "original": {
+            "x": 1047,
+            "y": 750
+          },
+          "x": 1047,
+          "y": 750
+        }
+      ],
+      "source": "shape_8748",
+      "target": "shape_2589",
+      "multipleNumberAllowed": false
+    },
+    {
+      "type": "domainStory:activity",
+      "name": "aus bei",
+      "id": "connection_3605",
+      "pickedColor": "black",
+      "number": null,
+      "waypoints": [
+        {
+          "original": {
+            "x": 748,
+            "y": 150
+          },
+          "x": 748,
+          "y": 150
+        },
+        {
+          "x": 835,
+          "y": 150
+        },
+        {
+          "original": {
+            "x": 868,
+            "y": 177
+          },
+          "x": 868,
+          "y": 177
+        }
+      ],
+      "source": "shape_5040",
+      "target": "shape_1708",
+      "multipleNumberAllowed": false
+    },
+    {
+      "type": "domainStory:activity",
+      "name": "überweist",
+      "id": "connection_3650",
+      "pickedColor": "black",
+      "number": 13,
+      "waypoints": [
+        {
+          "original": {
+            "x": 705,
+            "y": 617
+          },
+          "x": 705,
+          "y": 617
+        },
+        {
+          "original": {
+            "x": 705,
+            "y": 712
+          },
+          "x": 705,
+          "y": 712
+        }
+      ],
+      "source": "shape_4121",
+      "target": "shape_9820",
+      "multipleNumberAllowed": false
+    },
+    {
+      "type": "domainStory:activity",
+      "name": "an ",
+      "id": "connection_4127",
+      "pickedColor": "black",
+      "number": null,
+      "waypoints": [
+        {
+          "original": {
+            "x": 748,
+            "y": -50
+          },
+          "x": 748,
+          "y": -50
+        },
+        {
+          "x": 855,
+          "y": -50
+        },
+        {
+          "original": {
+            "x": 896,
+            "y": 153
+          },
+          "x": 896,
+          "y": 153
+        }
+      ],
+      "source": "shape_9893",
+      "target": "shape_1708",
+      "multipleNumberAllowed": false
+    },
+    {
+      "type": "domainStory:activity",
+      "name": "erteilt",
+      "id": "connection_4319",
+      "pickedColor": "black",
+      "number": 11,
+      "waypoints": [
+        {
+          "original": {
+            "x": 1085,
+            "y": 607
+          },
+          "x": 1085,
+          "y": 607
+        },
+        {
+          "original": {
+            "x": 1085,
+            "y": 622
+          },
+          "x": 1085,
+          "y": 622
+        }
+      ],
+      "source": "shape_2056",
+      "target": "shape_0653",
+      "multipleNumberAllowed": false
+    },
+    {
+      "type": "domainStory:activity",
+      "name": "gibt",
+      "id": "connection_4457",
+      "pickedColor": "black",
+      "number": 7,
+      "waypoints": [
+        {
+          "original": {
+            "x": 936,
+            "y": 213
+          },
+          "x": 936,
+          "y": 213
+        },
+        {
+          "x": 1015,
+          "y": 270
+        },
+        {
+          "original": {
+            "x": 1048,
+            "y": 342
+          },
+          "x": 1048,
+          "y": 342
+        }
+      ],
+      "source": "shape_1708",
+      "target": "shape_6060",
+      "multipleNumberAllowed": false
+    },
+    {
+      "type": "domainStory:activity",
+      "name": "aus und schickt ihn",
+      "id": "connection_4627",
+      "pickedColor": "black",
+      "number": null,
+      "waypoints": [
+        {
+          "original": {
+            "x": 467,
+            "y": 451
+          },
+          "x": 467,
+          "y": 451
+        },
+        {
+          "original": {
+            "x": 465,
+            "y": 412
+          },
+          "x": 465,
+          "y": 412
+        }
+      ],
+      "source": "shape_3150",
+      "target": "shape_8018",
+      "multipleNumberAllowed": false
+    },
+    {
+      "type": "domainStory:activity",
+      "name": "für",
+      "id": "connection_4652",
+      "pickedColor": "black",
+      "number": null,
+      "waypoints": [
+        {
+          "original": {
+            "x": 1047,
+            "y": 660
+          },
+          "x": 1047,
+          "y": 660
+        },
+        {
+          "original": {
+            "x": 949,
+            "y": 660
+          },
+          "x": 949,
+          "y": 660
+        }
+      ],
+      "source": "shape_0653",
+      "target": "shape_2157",
+      "multipleNumberAllowed": false
+    },
+    {
+      "type": "domainStory:activity",
+      "name": "leitet",
+      "id": "connection_4807",
+      "pickedColor": "black",
+      "number": 10,
+      "waypoints": [
+        {
+          "original": {
+            "x": 745,
+            "y": 568
+          },
+          "x": 745,
+          "y": 568
+        },
+        {
+          "original": {
+            "x": 868,
+            "y": 562
+          },
+          "x": 868,
+          "y": 562
+        }
+      ],
+      "source": "shape_4121",
+      "target": "shape_8117",
+      "multipleNumberAllowed": false
+    },
+    {
+      "type": "domainStory:activity",
+      "name": "erklärt die",
+      "id": "connection_5729",
+      "pickedColor": "black",
+      "number": 2,
+      "waypoints": [
+        {
+          "original": {
+            "x": 888,
+            "y": 153
+          },
+          "x": 888,
+          "y": 153
+        },
+        {
+          "x": 835,
+          "y": 40
+        },
+        {
+          "original": {
+            "x": 748,
+            "y": 40
+          },
+          "x": 748,
+          "y": 40
+        }
+      ],
+      "source": "shape_1708",
+      "target": "shape_4663",
+      "multipleNumberAllowed": false
+    },
+    {
+      "type": "domainStory:activity",
+      "name": "eröffnet",
+      "id": "connection_5736",
+      "pickedColor": "black",
+      "number": 12,
+      "waypoints": [
+        {
+          "original": {
+            "x": 667,
+            "y": 587
+          },
+          "x": 667,
+          "y": 587
+        },
+        {
+          "original": {
+            "x": 534,
+            "y": 647
+          },
+          "x": 534,
+          "y": 647
+        }
+      ],
+      "source": "shape_4121",
+      "target": "shape_9110",
+      "multipleNumberAllowed": false
+    },
+    {
+      "type": "domainStory:activity",
+      "name": "an",
+      "id": "connection_6221",
+      "pickedColor": "black",
+      "number": null,
+      "waypoints": [
+        {
+          "original": {
+            "x": 455,
+            "y": 332
+          },
+          "x": 455,
+          "y": 332
+        },
+        {
+          "original": {
+            "x": 455,
+            "y": 248
+          },
+          "x": 455,
+          "y": 248
+        }
+      ],
+      "source": "shape_8018",
+      "target": "shape_5444",
+      "multipleNumberAllowed": false
+    },
+    {
+      "type": "domainStory:activity",
+      "name": "füllt",
+      "id": "connection_6243",
+      "pickedColor": "black",
+      "number": 8,
+      "waypoints": [
+        {
+          "original": {
+            "x": 688,
+            "y": 532
+          },
+          "x": 688,
+          "y": 532
+        },
+        {
+          "x": 655,
+          "y": 460
+        },
+        {
+          "original": {
+            "x": 548,
+            "y": 460
+          },
+          "x": 548,
+          "y": 460
+        }
+      ],
+      "source": "shape_4121",
+      "target": "shape_3150",
+      "multipleNumberAllowed": false
+    },
+    {
+      "type": "domainStory:activity",
+      "name": "zurück an",
+      "id": "connection_6522",
+      "pickedColor": "black",
+      "number": null,
+      "waypoints": [
+        {
+          "original": {
+            "x": 317,
+            "y": 500
+          },
+          "x": 317,
+          "y": 504.75
+        },
+        {
+          "x": 335,
+          "y": 560
+        },
+        {
+          "original": {
+            "x": 667,
+            "y": 560
+          },
+          "x": 667,
+          "y": 560
+        }
+      ],
+      "source": "shape_5623",
+      "target": "shape_4121",
+      "multipleNumberAllowed": false
+    },
+    {
+      "type": "domainStory:activity",
+      "name": "unterschreibt",
+      "id": "connection_6868",
+      "pickedColor": "black",
+      "number": 6,
+      "waypoints": [
+        {
+          "original": {
+            "x": 477,
+            "y": 231
+          },
+          "x": 477,
+          "y": 246
+        },
+        {
+          "x": 585,
+          "y": 380
+        },
+        {
+          "original": {
+            "x": 667,
+            "y": 380
+          },
+          "x": 667,
+          "y": 380
+        }
+      ],
+      "source": "shape_5444",
+      "target": "shape_8462",
+      "multipleNumberAllowed": false
+    },
+    {
+      "type": "domainStory:activity",
+      "name": "für",
+      "id": "connection_7623",
+      "pickedColor": "black",
+      "number": null,
+      "waypoints": [
+        {
+          "original": {
+            "x": 1027,
+            "y": 391
+          },
+          "x": 1027,
+          "y": 391
+        },
+        {
+          "original": {
+            "x": 918,
+            "y": 421
+          },
+          "x": 918,
+          "y": 421
+        }
+      ],
+      "source": "shape_6060",
+      "target": "shape_9261",
+      "multipleNumberAllowed": false
+    },
+    {
+      "type": "domainStory:activity",
+      "name": "weist sich mit",
+      "id": "connection_7962",
+      "pickedColor": "black",
+      "number": 3,
+      "waypoints": [
+        {
+          "original": {
+            "x": 481,
+            "y": 184
+          },
+          "x": 481,
+          "y": 184
+        },
+        {
+          "x": 535,
+          "y": 150
+        },
+        {
+          "original": {
+            "x": 667,
+            "y": 150
+          },
+          "x": 667,
+          "y": 150
+        }
+      ],
+      "source": "shape_5444",
+      "target": "shape_5040",
+      "multipleNumberAllowed": false
+    },
+    {
+      "type": "domainStory:activity",
+      "name": "dem",
+      "id": "connection_7963",
+      "pickedColor": "black",
+      "number": null,
+      "waypoints": [
+        {
+          "original": {
+            "x": 667,
+            "y": 40
+          },
+          "x": 667,
+          "y": 40
+        },
+        {
+          "x": 545,
+          "y": 40
+        },
+        {
+          "original": {
+            "x": 475,
+            "y": 178
+          },
+          "x": 475,
+          "y": 178
+        }
+      ],
+      "source": "shape_4663",
+      "target": "shape_5444",
+      "multipleNumberAllowed": false
+    },
+    {
+      "type": "domainStory:activity",
+      "name": "zur Prüfung weiter an",
+      "id": "connection_9665",
+      "pickedColor": "black",
+      "number": null,
+      "waypoints": [
+        {
+          "original": {
+            "x": 949,
+            "y": 560
+          },
+          "x": 949,
+          "y": 560
+        },
+        {
+          "original": {
+            "x": 1047,
+            "y": 560
+          },
+          "x": 1047,
+          "y": 560
+        }
+      ],
+      "source": "shape_8117",
+      "target": "shape_2056",
+      "multipleNumberAllowed": false
+    },
+    {
+      "type": "domainStory:activity",
+      "name": "wendet sich mit seinem",
+      "id": "connection_9750",
+      "pickedColor": "black",
+      "number": 1,
+      "waypoints": [
+        {
+          "original": {
+            "x": 462,
+            "y": 166
+          },
+          "x": 462,
+          "y": 166
+        },
+        {
+          "x": 505,
+          "y": -50
+        },
+        {
+          "original": {
+            "x": 667,
+            "y": -50
+          },
+          "x": 667,
+          "y": -50
+        }
+      ],
+      "source": "shape_5444",
+      "target": "shape_9893",
+      "multipleNumberAllowed": false
+    },
+    {
+      "type": "domainStory:activity",
+      "name": "",
+      "id": "connection_9845",
+      "pickedColor": "black",
+      "number": null,
+      "waypoints": [
+        {
+          "original": {
+            "x": 868,
+            "y": 644
+          },
+          "x": 868,
+          "y": 644
+        },
+        {
+          "original": {
+            "x": 737,
+            "y": 589
+          },
+          "x": 737,
+          "y": 589
+        }
+      ],
+      "source": "shape_2157",
+      "target": "shape_4121"
+    },
+    {
+      "type": "domainStory:workObjectInfo",
+      "name": "Genehmigung",
+      "id": "shape_0653",
+      "pickedColor": "#00d64b",
+      "x": 1047,
+      "y": 622
+    },
+    {
+      "type": "domainStory:actorPerson",
+      "name": "Bankberater",
+      "id": "shape_1708",
+      "pickedColor": "black",
+      "x": 868,
+      "y": 153
+    },
+    {
+      "type": "domainStory:actorPerson",
+      "name": "Kreditprüfer",
+      "id": "shape_2056",
+      "pickedColor": "black",
+      "x": 1047,
+      "y": 522
+    },
+    {
+      "type": "domainStory:workObjectDocument",
+      "name": "Kredit",
+      "id": "shape_2157",
+      "pickedColor": "#00d652",
+      "x": 868,
+      "y": 622
+    },
+    {
+      "type": "domainStory:workObjectFolder",
+      "name": "Konto",
+      "id": "shape_2589",
+      "pickedColor": "#00d604",
+      "x": 1047,
+      "y": 712
+    },
+    {
+      "type": "domainStory:workObjectDocument",
+      "name": "Kreditvertrag",
+      "id": "shape_3150",
+      "pickedColor": "#00d640",
+      "x": 467,
+      "y": 422
+    },
+    {
+      "type": "domainStory:workObjectEmail",
+      "name": "per Email",
+      "id": "shape_3857",
+      "pickedColor": "black",
+      "x": 527,
+      "y": 222
+    },
+    {
+      "type": "domainStory:actorPerson",
+      "name": "Kreditberater",
+      "id": "shape_4121",
+      "pickedColor": "black",
+      "x": 667,
+      "y": 532
+    },
+    {
+      "type": "domainStory:workObjectConversation",
+      "name": "Ablauf für die Kredit-aufnahme",
+      "id": "shape_4663",
+      "pickedColor": "black",
+      "x": 667,
+      "y": 2
+    },
+    {
+      "type": "domainStory:workObjectInfo",
+      "name": "Bonität",
+      "id": "shape_4730",
+      "pickedColor": "#00d60e",
+      "x": 1027,
+      "y": 2
+    },
+    {
+      "type": "domainStory:workObjectDocument",
+      "name": "Kredit",
+      "id": "shape_4768",
+      "pickedColor": "#00d652",
+      "x": 267,
+      "y": 622
+    },
+    {
+      "type": "domainStory:workObjectDocument",
+      "name": "Kontoer-öffnungsantrag",
+      "id": "shape_5010",
+      "pickedColor": "#00d636",
+      "x": 667,
+      "y": 222
+    },
+    {
+      "type": "domainStory:workObjectDocument",
+      "name": "Ausweis",
+      "id": "shape_5040",
+      "pickedColor": "black",
+      "x": 667,
+      "y": 112
+    },
+    {
+      "type": "domainStory:actorPerson",
+      "name": "Bankkunde",
+      "id": "shape_5444",
+      "pickedColor": "black",
+      "x": 417,
+      "y": 163
+    },
+    {
+      "type": "domainStory:workObjectDocument",
+      "name": "Kreditvertrag",
+      "id": "shape_5623",
+      "pickedColor": "black",
+      "x": 267,
+      "y": 422
+    },
+    {
+      "type": "domainStory:workObjectConversation",
+      "name": "Kreditwunsch",
+      "id": "shape_6060",
+      "pickedColor": "#00d624",
+      "x": 1027,
+      "y": 342
+    },
+    {
+      "type": "domainStory:workObjectEmail",
+      "name": "per Email",
+      "id": "shape_8018",
+      "pickedColor": "black",
+      "x": 417,
+      "y": 332
+    },
+    {
+      "type": "domainStory:workObjectDocument",
+      "name": "Kreditvertrag",
+      "id": "shape_8117",
+      "pickedColor": "#00d668",
+      "x": 868,
+      "y": 522
+    },
+    {
+      "type": "domainStory:workObjectDocument",
+      "name": "Kontoer-öffnungsantrag",
+      "id": "shape_8462",
+      "pickedColor": "black",
+      "x": 667,
+      "y": 342
+    },
+    {
+      "type": "domainStory:workObjectFolder",
+      "name": "Kreditkonto",
+      "id": "shape_8748",
+      "pickedColor": "#00d640",
+      "x": 868,
+      "y": 712
+    },
+    {
+      "type": "domainStory:workObjectFolder",
+      "name": "Kreditkonto",
+      "id": "shape_9110",
+      "pickedColor": "#00d619",
+      "x": 467,
+      "y": 622
+    },
+    {
+      "type": "domainStory:workObjectInfo",
+      "name": "Kontonummer",
+      "id": "shape_9261",
+      "pickedColor": "#00d636",
+      "x": 847,
+      "y": 392
+    },
+    {
+      "type": "domainStory:actorPerson",
+      "name": "Schufa",
+      "id": "shape_9691",
+      "pickedColor": "black",
+      "x": 1167,
+      "y": 2
+    },
+    {
+      "type": "domainStory:workObjectFolder",
+      "name": "Konto",
+      "id": "shape_9796",
+      "pickedColor": "#00d60e",
+      "x": 1027,
+      "y": 153
+    },
+    {
+      "type": "domainStory:workObjectEuro",
+      "name": "Kreditbetrag",
+      "id": "shape_9820",
+      "pickedColor": "#00d64b",
+      "x": 667,
+      "y": 712
+    },
+    {
+      "type": "domainStory:workObjectConversation",
+      "name": "Kreditwunsch",
+      "id": "shape_9893",
+      "pickedColor": "black",
+      "x": 667,
+      "y": -88
+    },
+    {
+      "info": ""
+    },
+    {
+      "version": "3.0.0"
+    }
+  ]
+}
