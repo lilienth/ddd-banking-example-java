@@ -20,7 +20,7 @@
   "dst": [
     {
       "type": "domainStory:activity",
-      "name": "und gibt ihn zurück",
+      "name": "and returns it to the",
       "id": "connection_0105",
       "pickedColor": "black",
       "number": null,
@@ -34,7 +34,7 @@
           "y": 380
         },
         {
-          "x": 805,
+          "x": 837,
           "y": 380
         },
         {
@@ -52,7 +52,7 @@
     },
     {
       "type": "domainStory:activity",
-      "name": "aus und schickt ihn",
+      "name": "and sends it",
       "id": "connection_0497",
       "pickedColor": "black",
       "number": null,
@@ -80,29 +80,29 @@
     },
     {
       "type": "domainStory:activity",
-      "name": "unterschreibt und sendet den",
+      "name": "signs and returns the",
       "id": "connection_0575",
       "pickedColor": "black",
-      "number": 9,
+      "number": 10,
       "waypoints": [
         {
           "original": {
-            "x": 417,
-            "y": 238
+            "x": 436,
+            "y": 201
           },
           "x": 417,
-          "y": 238
+          "y": 201
         },
         {
-          "x": 306,
-          "y": 238
+          "x": 305,
+          "y": 201
         },
         {
           "original": {
-            "x": 306,
-            "y": 422
+            "x": 305,
+            "y": 460
           },
-          "x": 306,
+          "x": 305,
           "y": 422
         }
       ],
@@ -112,9 +112,9 @@
     },
     {
       "type": "domainStory:activity",
-      "name": "",
+      "name": "to the",
       "id": "connection_0688",
-      "pickedColor": "black",
+      "pickedColor": "#000000",
       "number": null,
       "waypoints": [
         {
@@ -135,11 +135,12 @@
         }
       ],
       "source": "shape_3857",
-      "target": "shape_5444"
+      "target": "shape_5444",
+      "multipleNumberAllowed": false
     },
     {
       "type": "domainStory:activity",
-      "name": "eröffnet",
+      "name": "opens",
       "id": "connection_1168",
       "pickedColor": "black",
       "number": 7,
@@ -167,7 +168,7 @@
     },
     {
       "type": "domainStory:activity",
-      "name": "vom",
+      "name": "from",
       "id": "connection_1199",
       "pickedColor": "black",
       "number": null,
@@ -195,7 +196,7 @@
     },
     {
       "type": "domainStory:activity",
-      "name": "weiter an",
+      "name": "to the",
       "id": "connection_1519",
       "pickedColor": "black",
       "number": null,
@@ -223,7 +224,7 @@
     },
     {
       "type": "domainStory:activity",
-      "name": "lässt",
+      "name": "has the",
       "id": "connection_2430",
       "pickedColor": "black",
       "number": 4,
@@ -255,7 +256,7 @@
     },
     {
       "type": "domainStory:activity",
-      "name": "prüfen durch",
+      "name": " checked by",
       "id": "connection_2511",
       "pickedColor": "black",
       "number": null,
@@ -283,7 +284,7 @@
     },
     {
       "type": "domainStory:activity",
-      "name": "für",
+      "name": "for the",
       "id": "connection_2819",
       "pickedColor": "black",
       "number": null,
@@ -311,9 +312,9 @@
     },
     {
       "type": "domainStory:activity",
-      "name": "füllt den",
+      "name": " fills out the",
       "id": "connection_2868",
-      "pickedColor": "black",
+      "pickedColor": "#000000",
       "number": 5,
       "waypoints": [
         {
@@ -343,7 +344,7 @@
     },
     {
       "type": "domainStory:activity",
-      "name": "auf",
+      "name": "to",
       "id": "connection_3506",
       "pickedColor": "black",
       "number": null,
@@ -371,7 +372,7 @@
     },
     {
       "type": "domainStory:activity",
-      "name": "aus bei",
+      "name": "to the",
       "id": "connection_3605",
       "pickedColor": "black",
       "number": null,
@@ -403,10 +404,10 @@
     },
     {
       "type": "domainStory:activity",
-      "name": "überweist",
+      "name": "transfers",
       "id": "connection_3650",
       "pickedColor": "black",
-      "number": 13,
+      "number": 14,
       "waypoints": [
         {
           "original": {
@@ -414,7 +415,7 @@
             "y": 617
           },
           "x": 705,
-          "y": 617
+          "y": 636
         },
         {
           "original": {
@@ -431,7 +432,7 @@
     },
     {
       "type": "domainStory:activity",
-      "name": "an ",
+      "name": "the",
       "id": "connection_4127",
       "pickedColor": "black",
       "number": null,
@@ -463,10 +464,10 @@
     },
     {
       "type": "domainStory:activity",
-      "name": "erteilt",
+      "name": "grands",
       "id": "connection_4319",
       "pickedColor": "black",
-      "number": 11,
+      "number": 12,
       "waypoints": [
         {
           "original": {
@@ -474,7 +475,7 @@
             "y": 607
           },
           "x": 1085,
-          "y": 607
+          "y": 626
         },
         {
           "original": {
@@ -491,10 +492,10 @@
     },
     {
       "type": "domainStory:activity",
-      "name": "gibt",
+      "name": "forwards the",
       "id": "connection_4457",
       "pickedColor": "black",
-      "number": 7,
+      "number": 8,
       "waypoints": [
         {
           "original": {
@@ -503,10 +504,6 @@
           },
           "x": 936,
           "y": 213
-        },
-        {
-          "x": 1015,
-          "y": 270
         },
         {
           "original": {
@@ -523,7 +520,7 @@
     },
     {
       "type": "domainStory:activity",
-      "name": "aus und schickt ihn",
+      "name": "and sends it",
       "id": "connection_4627",
       "pickedColor": "black",
       "number": null,
@@ -551,9 +548,9 @@
     },
     {
       "type": "domainStory:activity",
-      "name": "für",
+      "name": "for the",
       "id": "connection_4652",
-      "pickedColor": "black",
+      "pickedColor": "#000000",
       "number": null,
       "waypoints": [
         {
@@ -579,10 +576,10 @@
     },
     {
       "type": "domainStory:activity",
-      "name": "leitet",
+      "name": "forwards the",
       "id": "connection_4807",
       "pickedColor": "black",
-      "number": 10,
+      "number": 11,
       "waypoints": [
         {
           "original": {
@@ -607,7 +604,7 @@
     },
     {
       "type": "domainStory:activity",
-      "name": "erklärt den",
+      "name": "explains the ",
       "id": "connection_5729",
       "pickedColor": "black",
       "number": 2,
@@ -639,10 +636,10 @@
     },
     {
       "type": "domainStory:activity",
-      "name": "eröffnet",
+      "name": "opens a",
       "id": "connection_5736",
       "pickedColor": "black",
-      "number": 12,
+      "number": 13,
       "waypoints": [
         {
           "original": {
@@ -667,7 +664,7 @@
     },
     {
       "type": "domainStory:activity",
-      "name": "an",
+      "name": "to the",
       "id": "connection_6221",
       "pickedColor": "black",
       "number": null,
@@ -695,10 +692,10 @@
     },
     {
       "type": "domainStory:activity",
-      "name": "füllt",
+      "name": "fills out the",
       "id": "connection_6243",
       "pickedColor": "black",
-      "number": 8,
+      "number": 9,
       "waypoints": [
         {
           "original": {
@@ -727,7 +724,7 @@
     },
     {
       "type": "domainStory:activity",
-      "name": "zurück an",
+      "name": "back to the",
       "id": "connection_6522",
       "pickedColor": "black",
       "number": null,
@@ -738,7 +735,7 @@
             "y": 500
           },
           "x": 317,
-          "y": 504.75
+          "y": 523.5
         },
         {
           "x": 335,
@@ -759,7 +756,7 @@
     },
     {
       "type": "domainStory:activity",
-      "name": "unterschreibt den",
+      "name": "signs the",
       "id": "connection_6868",
       "pickedColor": "black",
       "number": 6,
@@ -791,7 +788,7 @@
     },
     {
       "type": "domainStory:activity",
-      "name": "für",
+      "name": "for an",
       "id": "connection_7623",
       "pickedColor": "black",
       "number": null,
@@ -819,7 +816,7 @@
     },
     {
       "type": "domainStory:activity",
-      "name": "weist sich mit seinem",
+      "name": "identifies himself with his",
       "id": "connection_7962",
       "pickedColor": "black",
       "number": 3,
@@ -851,7 +848,7 @@
     },
     {
       "type": "domainStory:activity",
-      "name": "dem",
+      "name": "to the",
       "id": "connection_7963",
       "pickedColor": "black",
       "number": null,
@@ -883,7 +880,7 @@
     },
     {
       "type": "domainStory:activity",
-      "name": "zur Prüfung weiter an",
+      "name": "for review to",
       "id": "connection_9665",
       "pickedColor": "black",
       "number": null,
@@ -911,7 +908,7 @@
     },
     {
       "type": "domainStory:activity",
-      "name": "wendet sich mit seinem",
+      "name": "contacts with",
       "id": "connection_9750",
       "pickedColor": "black",
       "number": 1,
@@ -970,7 +967,7 @@
     },
     {
       "type": "domainStory:workObjectInfo",
-      "name": "Genehmigung",
+      "name": "Approval",
       "id": "shape_0653",
       "pickedColor": "#00d64b",
       "x": 1047,
@@ -978,7 +975,7 @@
     },
     {
       "type": "domainStory:actorPerson",
-      "name": "Bankberater",
+      "name": "Bank Consultant",
       "id": "shape_1708",
       "pickedColor": "black",
       "x": 868,
@@ -986,7 +983,7 @@
     },
     {
       "type": "domainStory:actorPerson",
-      "name": "Kreditprüfer",
+      "name": "Credit Assessor",
       "id": "shape_2056",
       "pickedColor": "black",
       "x": 1047,
@@ -994,7 +991,7 @@
     },
     {
       "type": "domainStory:workObjectDocument",
-      "name": "Kredit",
+      "name": "Credit",
       "id": "shape_2157",
       "pickedColor": "#00d652",
       "x": 868,
@@ -1002,7 +999,7 @@
     },
     {
       "type": "domainStory:workObjectFolder",
-      "name": "Konto",
+      "name": "Account",
       "id": "shape_2589",
       "pickedColor": "#00d604",
       "x": 1047,
@@ -1010,7 +1007,7 @@
     },
     {
       "type": "domainStory:workObjectDocument",
-      "name": "Kreditvertrag",
+      "name": "Credit Agreement",
       "id": "shape_3150",
       "pickedColor": "#00d640",
       "x": 467,
@@ -1026,7 +1023,7 @@
     },
     {
       "type": "domainStory:actorPerson",
-      "name": "Kreditberater",
+      "name": "Credit Counselor",
       "id": "shape_4121",
       "pickedColor": "black",
       "x": 667,
@@ -1034,7 +1031,7 @@
     },
     {
       "type": "domainStory:workObjectConversation",
-      "name": "Ablauf für die Kredit-aufnahme",
+      "name": "credit procedure",
       "id": "shape_4663",
       "pickedColor": "black",
       "x": 667,
@@ -1042,7 +1039,7 @@
     },
     {
       "type": "domainStory:workObjectInfo",
-      "name": "Bonität",
+      "name": "credit-worthiness",
       "id": "shape_4730",
       "pickedColor": "#00d60e",
       "x": 1027,
@@ -1050,7 +1047,7 @@
     },
     {
       "type": "domainStory:workObjectDocument",
-      "name": "Kredit",
+      "name": "Credit",
       "id": "shape_4768",
       "pickedColor": "#00d652",
       "x": 267,
@@ -1058,7 +1055,7 @@
     },
     {
       "type": "domainStory:workObjectDocument",
-      "name": "Kontoer-öffnungsantrag",
+      "name": "account opening application",
       "id": "shape_5010",
       "pickedColor": "#00d636",
       "x": 667,
@@ -1066,7 +1063,7 @@
     },
     {
       "type": "domainStory:workObjectDocument",
-      "name": "Ausweis",
+      "name": "ID card",
       "id": "shape_5040",
       "pickedColor": "black",
       "x": 667,
@@ -1074,7 +1071,7 @@
     },
     {
       "type": "domainStory:actorPerson",
-      "name": "Bankkunde",
+      "name": "Bank Client",
       "id": "shape_5444",
       "pickedColor": "black",
       "x": 417,
@@ -1082,7 +1079,7 @@
     },
     {
       "type": "domainStory:workObjectDocument",
-      "name": "Kreditvertrag",
+      "name": "Credit Agreement",
       "id": "shape_5623",
       "pickedColor": "black",
       "x": 267,
@@ -1090,7 +1087,7 @@
     },
     {
       "type": "domainStory:workObjectConversation",
-      "name": "Kreditwunsch",
+      "name": "Credit Request",
       "id": "shape_6060",
       "pickedColor": "#00d624",
       "x": 1027,
@@ -1106,7 +1103,7 @@
     },
     {
       "type": "domainStory:workObjectDocument",
-      "name": "Kreditvertrag",
+      "name": "Credit Agreement",
       "id": "shape_8117",
       "pickedColor": "#00d668",
       "x": 868,
@@ -1114,7 +1111,7 @@
     },
     {
       "type": "domainStory:workObjectDocument",
-      "name": "Kontoer-öffnungsantrag",
+      "name": "account opening application",
       "id": "shape_8462",
       "pickedColor": "black",
       "x": 667,
@@ -1122,7 +1119,7 @@
     },
     {
       "type": "domainStory:workObjectFolder",
-      "name": "Kreditkonto",
+      "name": "Credit Account",
       "id": "shape_8748",
       "pickedColor": "#00d640",
       "x": 868,
@@ -1130,7 +1127,7 @@
     },
     {
       "type": "domainStory:workObjectFolder",
-      "name": "Kreditkonto",
+      "name": "Credit Account",
       "id": "shape_9110",
       "pickedColor": "#00d619",
       "x": 467,
@@ -1138,7 +1135,7 @@
     },
     {
       "type": "domainStory:workObjectInfo",
-      "name": "Kontonummer",
+      "name": "Account Number",
       "id": "shape_9261",
       "pickedColor": "#00d636",
       "x": 847,
@@ -1146,7 +1143,7 @@
     },
     {
       "type": "domainStory:actorPerson",
-      "name": "Schufa",
+      "name": "Credit Rating",
       "id": "shape_9691",
       "pickedColor": "black",
       "x": 1167,
@@ -1154,7 +1151,7 @@
     },
     {
       "type": "domainStory:workObjectFolder",
-      "name": "Konto",
+      "name": "Account",
       "id": "shape_9796",
       "pickedColor": "#00d60e",
       "x": 1027,
@@ -1162,7 +1159,7 @@
     },
     {
       "type": "domainStory:workObjectEuro",
-      "name": "Kreditbetrag",
+      "name": "Credit Amount",
       "id": "shape_9820",
       "pickedColor": "#00d64b",
       "x": 667,
@@ -1170,7 +1167,7 @@
     },
     {
       "type": "domainStory:workObjectConversation",
-      "name": "Kreditwunsch",
+      "name": "Credit Request",
       "id": "shape_9893",
       "pickedColor": "black",
       "x": 667,
