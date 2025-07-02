@@ -2,6 +2,8 @@
 
 ## Build and Test
 
+This repository contains several versions of the same project. Just change into the version you want to work and and build with Maven.
+
 On Windows:
 
 ```powershell
