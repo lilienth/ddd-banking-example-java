@@ -20,20 +20,19 @@ cd "1 Hands-on Legacy Code"
 
 ## Containerized Version
 
-The easiest way is to use open the project in Visual Studio Code inside a Devcontainer. For that you need Docker installed.
+The easiest way is to use open the project in Visual Studio Code or IntelliJ inside a Devcontainer. For that you need Docker installed.
 
 ### Install Docker Desktop
 
 On Windows:
 
 ```powershell
-winget install -e --id Docker.DockerDesktop
+winget install -e --id suse.RancherDesktop
 ```
-
 On MacOS:
 
 ```sh
-brew install --cask docker
+brew install --cask rancher
 ```
 
 ## On Your Own System
