@@ -27,6 +27,7 @@ The easiest way is to use open the project in Visual Studio Code or IntelliJ ins
 On Windows:
 
 ```powershell
+wsl --install --no-distribution
 winget install -e --id suse.RancherDesktop
 ```
 On MacOS:
